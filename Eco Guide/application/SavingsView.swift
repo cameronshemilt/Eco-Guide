@@ -15,6 +15,10 @@ struct SavingsView: View {
 
 struct SavingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SavingsView()
+        VStack {
+            SavingsView()
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(Color.backgroundColor)
     }
 }

@@ -15,6 +15,10 @@ struct UsageView: View {
 
 struct UsageView_Previews: PreviewProvider {
     static var previews: some View {
-        UsageView()
+        VStack {
+            UsageView()
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(Color.backgroundColor)
     }
 }

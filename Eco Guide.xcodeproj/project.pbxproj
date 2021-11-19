@@ -12,6 +12,8 @@
 		451840BC27484FF400C390F0 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 451840BB27484FF400C390F0 /* SFSafeSymbols */; };
 		451840BE2748538300C390F0 /* SavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BD2748538300C390F0 /* SavingsView.swift */; };
 		451840C02748538F00C390F0 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BF2748538F00C390F0 /* UsageView.swift */; };
+		451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */; };
+		451840C727485FA900C390F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C627485FA900C390F0 /* Card.swift */; };
 		CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */; };
 		CB8A118E27483EC100442B6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118D27483EC100442B6A /* ContentView.swift */; };
 		CB8A119027483EC200442B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8A118F27483EC200442B6A /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		451840B827484FC500C390F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		451840BD2748538300C390F0 /* SavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsView.swift; sourceTree = "<group>"; };
 		451840BF2748538F00C390F0 /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
+		451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonYearlyTitleView.swift; sourceTree = "<group>"; };
+		451840C627485FA900C390F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		CB8A118827483EC100442B6A /* Eco Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco_GuideApp.swift; sourceTree = "<group>"; };
 		CB8A118D27483EC100442B6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		451840C3274854E800C390F0 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */,
+				451840C627485FA900C390F0 /* Card.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 				CB8A118E27483EC100442B6A /* ContentView.swift in Sources */,
 				451840B927484FC600C390F0 /* HomeView.swift in Sources */,
 				CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */,
+				451840C727485FA900C390F0 /* Card.swift in Sources */,
+				451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */,
 				CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
