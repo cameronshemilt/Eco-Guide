@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451840B727484DAD00C390F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840B627484DAD00C390F0 /* Extensions.swift */; };
+		451840B927484FC600C390F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840B827484FC500C390F0 /* HomeView.swift */; };
+		451840BC27484FF400C390F0 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 451840BB27484FF400C390F0 /* SFSafeSymbols */; };
+		451840BE2748538300C390F0 /* SavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BD2748538300C390F0 /* SavingsView.swift */; };
+		451840C02748538F00C390F0 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BF2748538F00C390F0 /* UsageView.swift */; };
 		CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */; };
 		CB8A118E27483EC100442B6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118D27483EC100442B6A /* ContentView.swift */; };
 		CB8A119027483EC200442B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8A118F27483EC200442B6A /* Assets.xcassets */; };
@@ -16,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451840B627484DAD00C390F0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		451840B827484FC500C390F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		451840BD2748538300C390F0 /* SavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsView.swift; sourceTree = "<group>"; };
+		451840BF2748538F00C390F0 /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
 		CB8A118827483EC100442B6A /* Eco Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco_GuideApp.swift; sourceTree = "<group>"; };
 		CB8A118D27483EC100442B6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,12 +39,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451840BC27484FF400C390F0 /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		451840C1274854C500C390F0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		451840C2274854D500C390F0 /* application */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */,
+				CB8A118D27483EC100442B6A /* ContentView.swift */,
+				451840B827484FC500C390F0 /* HomeView.swift */,
+				451840BD2748538300C390F0 /* SavingsView.swift */,
+				451840BF2748538F00C390F0 /* UsageView.swift */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		451840C3274854E800C390F0 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		CB8A117F27483EC100442B6A = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +91,13 @@
 		CB8A118A27483EC100442B6A /* Eco Guide */ = {
 			isa = PBXGroup;
 			children = (
-				CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */,
-				CB8A118D27483EC100442B6A /* ContentView.swift */,
-				CB8A118F27483EC200442B6A /* Assets.xcassets */,
+				451840C1274854C500C390F0 /* model */,
+				451840C2274854D500C390F0 /* application */,
+				451840C3274854E800C390F0 /* components */,
+				451840B627484DAD00C390F0 /* Extensions.swift */,
 				CB8A119427483EC200442B6A /* Persistence.swift */,
 				CB8A119627483EC200442B6A /* Eco_Guide.xcdatamodeld */,
+				CB8A118F27483EC200442B6A /* Assets.xcassets */,
 				CB8A119127483EC200442B6A /* Preview Content */,
 			);
 			path = "Eco Guide";
@@ -89,6 +127,9 @@
 			dependencies = (
 			);
 			name = "Eco Guide";
+			packageProductDependencies = (
+				451840BB27484FF400C390F0 /* SFSafeSymbols */,
+			);
 			productName = "Eco Guide";
 			productReference = CB8A118827483EC100442B6A /* Eco Guide.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +158,9 @@
 				Base,
 			);
 			mainGroup = CB8A117F27483EC100442B6A;
+			packageReferences = (
+				451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
 			productRefGroup = CB8A118927483EC100442B6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,8 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451840B727484DAD00C390F0 /* Extensions.swift in Sources */,
+				451840BE2748538300C390F0 /* SavingsView.swift in Sources */,
+				451840C02748538F00C390F0 /* UsageView.swift in Sources */,
 				CB8A119527483EC200442B6A /* Persistence.swift in Sources */,
 				CB8A118E27483EC100442B6A /* ContentView.swift in Sources */,
+				451840B927484FC600C390F0 /* HomeView.swift in Sources */,
 				CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */,
 				CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */,
 			);
@@ -349,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		451840BB27484FF400C390F0 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CB8A119627483EC200442B6A /* Eco_Guide.xcdatamodeld */ = {
