@@ -19,19 +19,19 @@ struct OnboardingView: View {
     var image: String {
         switch activeView {
         case 0:
-            return "forest"
+            return "forest-min"
         case 1:
-            return "food"
+            return "food-min"
         case 2:
-            return "road"
+            return "road-min"
         case 3:
-            return "road"
+            return "road-min"
         case 4:
-            return "bulb"
+            return "bulb-min"
         case 5:
-            return "plastic"
+            return "plastic-min"
         default:
-            return "forest"
+            return "forest-min"
         }
     }
     

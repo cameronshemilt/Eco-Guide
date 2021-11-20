@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TipDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) var moc
     let tip: Tip
     
     var body: some View {
@@ -30,8 +31,16 @@ struct TipDetailView: View {
                 .multilineTextAlignment(.center)
             
             Spacer()
-            Button("ACCEPT", action: {
-                #warning("Implement")
+            Button("Accept", action: {
+                let entry = AcceptedTipEntry(context: moc)
+                entry.id = Int64(tip.id)
+                entry.timestamp = Date.now
+                do {
+                    try moc.save()
+                } catch {
+                    print("COULD NOT SAVE!")
+                }
+                dismiss()
             })
                 .buttonStyle(PrimaryButtonStyle())
         }
@@ -48,9 +57,7 @@ struct TipDetailView: View {
 struct TipDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-        TipDetailView(tip: Tip(id: 1, title: "Using renewable energy",
-                               description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
-                               category: .living))
+            TipDetailView(tip: Tip.mockTips[0])
                 .background(Color.backgroundColor)
         }
     }
