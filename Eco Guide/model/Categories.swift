@@ -7,7 +7,11 @@
 
 import SFSafeSymbols
 
-enum Categories: String, CaseIterable {
+enum Categories: String, CaseIterable, Identifiable {
+    var id: String {
+        return rawValue
+    }
+    
     case transport, nutrition, wasteReduction, housing, living, other
     
     init(_ string: String) {

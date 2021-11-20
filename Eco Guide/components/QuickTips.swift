@@ -9,20 +9,21 @@ import SwiftUI
 import Combine
 
 #warning("hold gesture")
+#warning("close button")
 
 struct QuickTips: View {
     @Environment(\.dismiss) private var dismiss
     
-    private let tips: [Tip]
+    private let facts: [FunFact]
     @ObservedObject private var storyTimer: StoryTimer
     
-    private var tipIndex: Int {
-        return Int(self.storyTimer.progress) % tips.count
+    private var factIndex: Int {
+        return Int(self.storyTimer.progress) % facts.count
     }
     
-    init(tips: [Tip]) {
-        self.tips = tips
-        self.storyTimer = StoryTimer(items: tips.count, interval: 10.0)
+    init(facts: [FunFact]) {
+        self.facts = facts
+        self.storyTimer = StoryTimer(items: facts.count, interval: 10.0)
     }
     
     var body: some View {
@@ -31,11 +32,9 @@ struct QuickTips: View {
             
             Spacer()
             
-            Text(tips[tipIndex].title)
-                .font(.largeTitle.bold())
+            Text(facts[factIndex].fact)
+                .font(.title.bold())
                 .padding(.bottom, 30)
-            Text(tips[tipIndex].description)
-                .font(.title3)
             
             Spacer()
             
@@ -57,7 +56,7 @@ struct QuickTips: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             Color.black
                 .ignoresSafeArea()
-                .opacity(0.3)
+                .opacity(0.6)
             splitTapGesture
         }
         .multilineTextAlignment(.center)
@@ -79,7 +78,7 @@ struct QuickTips: View {
     
     private var progressBars: some View {
         HStack {
-            ForEach(self.tips.indices) { x in
+            ForEach(self.facts.indices) { x in
                 ProgressBar(value: min(max((CGFloat(self.storyTimer.progress) - CGFloat(x)), 0.0), 1.0))
                     .animation(.linear, value: self.storyTimer.progress)
             }
@@ -88,7 +87,7 @@ struct QuickTips: View {
     }
     
     private var backgroundImageName: String {
-        return tips[tipIndex].category.images[tipIndex % tips[tipIndex].category.images.count]
+        return facts[factIndex].category.images[factIndex % facts[factIndex].category.images.count]
     }
 }
 
@@ -151,6 +150,6 @@ fileprivate class StoryTimer: ObservableObject {
 
 struct QuickTips_Previews: PreviewProvider {
     static var previews: some View {
-        QuickTips(tips: Tip.data)
+        QuickTips(facts: Array(FunFact.data.dropFirst(4)))
     }
 }

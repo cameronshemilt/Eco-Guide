@@ -11,6 +11,8 @@ struct HomeView: View {
     @AppStorage(Defaults.goalEmission) private var goalEmission: Double = 10000
     @ObservedObject private var ecoCalculator = EcoCalculator()
 
+    @State private var showCategoryFacts: Categories? = nil
+    
     var body: some View {
         ScrollView {
             Group {
@@ -27,6 +29,9 @@ struct HomeView: View {
                         ForEach(Categories.allCases, id: \.self) { category in
                             StoryPreview(category: category, seen: false, size: 50)
                                 .padding(5)
+                                .onTapGesture {
+                                    showCategoryFacts = category
+                                }
                         }
                     }
                 }
@@ -37,9 +42,13 @@ struct HomeView: View {
             }
             .padding(.horizontal)
         }
-//        .fullScreenCover(isPresented: $story) {
-//            QuickTips(tips: Tip.mockTips)
-//        }
+        .fullScreenCover(item: $showCategoryFacts) { cate in
+            if let fact = FunFact.data.first(where: { $0.category == cate }) {
+                QuickTips(facts: [fact] + Array(FunFact.data.filter({$0.id != fact.id}).shuffled().suffix(3)))
+            } else {
+                QuickTips(facts: Array(FunFact.data.shuffled().suffix(4)))
+            }
+        }
     }
     
     @State private var extendGoal = false
