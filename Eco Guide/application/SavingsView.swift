@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct SavingsView: View {
-    @FetchRequest(entity: AcceptedTipEntry.entity()
-                  , sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
     @State private var showBeginner = true
     var openTips: [Tip] {
         Tip.data.filter({ tip in
-            !data.contains(where: { $0.id == tip.id })
+            !data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
     var acceptedTips: [Tip] {
         Tip.data.filter({ tip in
-            data.contains(where: { $0.id == tip.id })
+            data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
     
