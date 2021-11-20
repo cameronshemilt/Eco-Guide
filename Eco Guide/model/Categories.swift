@@ -19,21 +19,19 @@ enum Categories: String, CaseIterable, Identifiable {
     }
     
     var images: [String] {
-        return ["bulb-min", "food-min", "fairn-min", "forest-min", "lake-min", "plastic-min", "road-min"]
-        #warning("todo categorize images")
         switch self {
         case .living:
-            return []
+            return ["living-1", "living-2", "living-3", "living-4"]
         case .transport:
-            return []
+            return ["transport-1", "transport-2", "transport-3", "transport-4"]
         case .nutrition:
-            return []
+            return ["food-min", "food-1", "food-2", "food-3"]
         case .wasteReduction:
-            return []
+            return ["waste-1", "waste-2", "waste-3"]
         case .housing:
-            return []
+            return ["house-1", "house-2", "house-3", "house-4"]
         case .other:
-            return []
+            return ["bulb-min", "fairn-min", "forest-min", "lake-min", "plastic-min", "road-min"]
         }
     }
     

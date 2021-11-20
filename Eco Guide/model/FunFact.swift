@@ -25,7 +25,7 @@ extension FunFact {
         .init(fact: "It takes about 17 liters of water to brush your teeth if you leave your tap running.", category: .living),
         .init(fact: "A 15-minutes shower takes 25-50 gallons of water.", category: .living),
         .init(fact: "Sustainability fun facts have revealed that if just one person goes vegan, they can save approximately 830 000 liters of water a year.", category: .living),
-        .init(fact: "When you leave your computer monitors on overnight they emit 8 million kg of carbon dioxide every year.", category: .living),
+        .init(fact: "When you leave your computer monitors on overnight they emit 8 million kilograms of carbon dioxide every year.", category: .other),
         .init(fact: "We need to reduce carbon dioxide emissions by humans to 45% from 2010 levels by 2030 and reach net-zero by 2050 to avoid a climate change catastrophe.", category: .other),
         .init(fact: "Improving fuel economy reduces one’s carbon footprint: Driving at the speed limit can improve fuel economy by 7 to 14 percent.", category: .transport),
         .init(fact: "If you take a long-haul flight, then you will be surprised by knowing that its CO2 equivalent is higher than what a single person in many countries causes in average per year.", category: .transport),

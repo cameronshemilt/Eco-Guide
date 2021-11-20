@@ -95,7 +95,8 @@ struct QuickTips: View {
     }
     
     private var backgroundImageName: String {
-        return facts[factIndex].category.images[factIndex % facts[factIndex].category.images.count]
+        let category = facts[factIndex].category
+        return category.images[factIndex % category.images.count]
     }
 }
 
