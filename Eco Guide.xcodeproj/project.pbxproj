@@ -22,6 +22,8 @@
 		CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8A119627483EC200442B6A /* Eco_Guide.xcdatamodeld */; };
 		CBF408172748E647000510D0 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408162748E647000510D0 /* ProgressRing.swift */; };
 		CBF408192748E662000510D0 /* UnitText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408182748E662000510D0 /* UnitText.swift */; };
+		CBF4081B2748E815000510D0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081A2748E815000510D0 /* Tip.swift */; };
+		CBF4081D2748E860000510D0 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081C2748E860000510D0 /* Categories.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		CB8A119727483EC200442B6A /* Eco_Guide.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eco_Guide.xcdatamodel; sourceTree = "<group>"; };
 		CBF408162748E647000510D0 /* ProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		CBF408182748E662000510D0 /* UnitText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitText.swift; sourceTree = "<group>"; };
+		CBF4081A2748E815000510D0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		CBF4081C2748E860000510D0 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 			children = (
 				CB8A119627483EC200442B6A /* Eco_Guide.xcdatamodeld */,
 				CB8A119427483EC200442B6A /* Persistence.swift */,
+				CBF4081A2748E815000510D0 /* Tip.swift */,
+				CBF4081C2748E860000510D0 /* Categories.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -200,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				451840B727484DAD00C390F0 /* Extensions.swift in Sources */,
+				CBF4081D2748E860000510D0 /* Categories.swift in Sources */,
 				451840BE2748538300C390F0 /* SavingsView.swift in Sources */,
 				451840C02748538F00C390F0 /* UsageView.swift in Sources */,
 				CB8A119527483EC200442B6A /* Persistence.swift in Sources */,
@@ -209,6 +216,7 @@
 				451840C727485FA900C390F0 /* Card.swift in Sources */,
 				451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */,
 				CBF408172748E647000510D0 /* ProgressRing.swift in Sources */,
+				CBF4081B2748E815000510D0 /* Tip.swift in Sources */,
 				CBF408192748E662000510D0 /* UnitText.swift in Sources */,
 				CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */,
 			);

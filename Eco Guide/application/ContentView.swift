@@ -23,14 +23,14 @@ struct ContentView: View {
                 SavingsView()
             }
             .tabItem {
-                Label("Savings", systemSymbol: .sparkle)
+                Label("Savings", systemSymbol: .leafFill)
             }
             
             TabViewElement {
                 UsageView()
             }
             .tabItem {
-                Label("Usage", systemSymbol: .sparkle)
+                Label("Usage", systemSymbol: .carFill)
             }
         }
     }
@@ -55,6 +55,5 @@ fileprivate struct TabViewElement<Content: View>: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
