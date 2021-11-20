@@ -37,16 +37,15 @@ struct HomeView: View {
                 }
                 
                 // Story Section
-                HStack {
-                    ForEach(Categories.allCases, id: \.self) { category in
-                        StoryPreview(category: category, seen: false, size: 50)
-                        if Categories.allCases.last != category {
-                            Spacer()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 0) {
+                        ForEach(Categories.allCases, id: \.self) { category in
+                            StoryPreview(category: category, seen: false, size: 50)
+                                .padding(5)
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
+                .padding(.vertical)
                 
                 // chart section
                 #warning("todo: chart section")
