@@ -26,7 +26,7 @@ struct SavingsView: View {
     var body: some View {
         ScrollView {
             Group {
-                CarbonYearlyTitleView(value: acceptedTips.reduce(0.0, { $0 + $1.calback() }), title: "Total Savings")
+                CarbonYearlyTitleView(value: acceptedTips.reduce(0.0, { $0 + $1.callback() }), title: "Total Savings")
                     .foregroundColor(.green)
                     .padding(.vertical, 25)
                 tagSelector
@@ -111,7 +111,7 @@ struct SavingsView: View {
                             .foregroundColor(.secondary)
                         HStack {
                             Spacer()
-                            UnitText("-73", unit: "KG CO2")
+                            UnitText(tip.callback().formattedUnitText, unit: "KG CO2")
                                 .fontSize(30)
                         }
                         .foregroundColor(.green)
