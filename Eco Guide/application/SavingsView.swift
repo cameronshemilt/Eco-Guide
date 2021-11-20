@@ -15,7 +15,8 @@ struct SavingsView: View {
     var body: some View {
         ScrollView {
             Group {
-                totalValue
+                CarbonYearlyTitleView(value: -739, title: "Total Savings")
+                    .foregroundColor(.green)
                     .padding(.vertical, 25)
                 tagSelector
                     .padding(.bottom, 5)
@@ -32,17 +33,7 @@ struct SavingsView: View {
             }
         }
     }
-    
-    private var totalValue: some View {
-        VStack{
-            Text("Total Savings")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            CarbonYearlyTitleView(value: -739)
-                .foregroundColor(.green)
-        }
-    }
-    
+        
     private var tagSelector: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {

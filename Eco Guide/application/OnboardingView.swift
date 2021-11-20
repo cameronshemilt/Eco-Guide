@@ -174,7 +174,7 @@ struct OnboardingView: View {
             Text("Based on our calculations, you produce about")
                 .font(.title)
             Spacer()
-            CarbonYearlyTitleView(value: 8739)
+            CarbonYearlyTitleView(value: 8739, title: "")
                 .foregroundColor(.red)
             Spacer()
             Text("We’ll help you get that number down.")

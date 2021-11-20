@@ -12,7 +12,8 @@ struct HomeView: View {
         ScrollView {
             Group {
                 // Title
-                totalValue
+                CarbonYearlyTitleView(value: -7, title: "Total Footprint")
+                    .foregroundColor(.green)
                     .padding(.vertical, 25)
 
                 // Goal card
@@ -55,16 +56,6 @@ struct HomeView: View {
 //        .fullScreenCover(isPresented: $story) {
 //            QuickTips(tips: Tip.mockTips)
 //        }
-    }
-    
-    private var totalValue: some View {
-        VStack{
-            Text("Total Footprint")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            CarbonYearlyTitleView(value: -7)
-                .foregroundColor(.green)
-        }
     }
 }
 

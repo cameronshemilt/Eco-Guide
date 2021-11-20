@@ -14,7 +14,8 @@ struct UsageView: View {
     var body: some View {
         ScrollView {
             Group {
-                totalValue
+                CarbonYearlyTitleView(value: +739, title: "You use")
+                    .foregroundColor(.red)
                     .padding(.vertical, 25)
                 
                 tagSelector
@@ -90,17 +91,7 @@ struct UsageView: View {
             }
         }
     }
-    
-    private var totalValue: some View {
-        VStack{
-            Text("You use")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            CarbonYearlyTitleView(value: +739)
-                .foregroundColor(.red)
-        }
-    }
-    
+        
     private var tagSelector: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {

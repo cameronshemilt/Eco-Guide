@@ -21,7 +21,7 @@ struct TipDetailView: View {
                 Text("Based on ous calculations,\nyou could save up to").multilineTextAlignment(.center)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                CarbonYearlyTitleView(value: -739)
+                CarbonYearlyTitleView(value: -739, title: "")
                     .foregroundColor(.green)
             }
             .padding(.bottom, 35)
