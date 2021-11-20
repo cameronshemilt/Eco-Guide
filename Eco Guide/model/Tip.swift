@@ -16,7 +16,7 @@ struct Tip: Identifiable {
 }
 
 extension Tip {
-    static let mockTips = [
+    static let data = [
         Tip(id: 1, title: "Using renewable energy",
             description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
             category: .living,

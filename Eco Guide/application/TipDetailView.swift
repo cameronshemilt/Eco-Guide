@@ -67,7 +67,7 @@ struct TipDetailView: View {
 struct TipDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TipDetailView(tip: Tip.mockTips[0])
+            TipDetailView(tip: Tip.data[0])
                 .background(Color.backgroundColor)
         }
     }

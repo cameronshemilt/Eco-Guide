@@ -151,6 +151,6 @@ fileprivate class StoryTimer: ObservableObject {
 
 struct QuickTips_Previews: PreviewProvider {
     static var previews: some View {
-        QuickTips(tips: Tip.mockTips)
+        QuickTips(tips: Tip.data)
     }
 }

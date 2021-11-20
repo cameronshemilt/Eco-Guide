@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct SavingsView: View {
+    @FetchRequest(entity: AcceptedTipEntry.entity()
+                  , sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
     @State private var showBeginner = true
-    let tips = Tip.mockTips
+    var openTips: [Tip] {
+        Tip.data.filter({ tip in
+            !data.contains(where: { $0.id == tip.id })
+        })
+    }
+    var acceptedTips: [Tip] {
+        Tip.data.filter({ tip in
+            data.contains(where: { $0.id == tip.id })
+        })
+    }
     
     var body: some View {
         ScrollView {
             Group {
-                CarbonYearlyTitleView(value: -739, title: "Total Savings")
+                CarbonYearlyTitleView(value: acceptedTips.reduce(0.0, { $0 + $1.calback() }), title: "Total Savings")
                     .foregroundColor(.green)
                     .padding(.vertical, 25)
                 tagSelector
@@ -86,10 +97,16 @@ struct SavingsView: View {
     
     private var tipsList: some View {
         VStack(spacing: 15) {
-            ForEach(tips) { tip in
+            ForEach(openTips) { tip in
                 Button(action: { selectedTip = tip }) {
                     Card(alignment: .leading) {
-                        Text(tip.title)
+                        HStack {
+                            if acceptedTips.contains(where: { $0.id == tip.id }) {
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundColor(.green)
+                            }
+                            Text(tip.title)
+                        }
                             .font(.title2)
                         Text(tip.description)
                             .foregroundColor(.secondary)
