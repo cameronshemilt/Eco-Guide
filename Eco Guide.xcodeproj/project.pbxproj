@@ -25,6 +25,8 @@
 		CBF408192748E662000510D0 /* UnitText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408182748E662000510D0 /* UnitText.swift */; };
 		CBF4081B2748E815000510D0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081A2748E815000510D0 /* Tip.swift */; };
 		CBF4081D2748E860000510D0 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081C2748E860000510D0 /* Categories.swift */; };
+		CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081E2748F561000510D0 /* TipDetailView.swift */; };
+		CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CBF408182748E662000510D0 /* UnitText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitText.swift; sourceTree = "<group>"; };
 		CBF4081A2748E815000510D0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		CBF4081C2748E860000510D0 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		CBF4081E2748F561000510D0 /* TipDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetailView.swift; sourceTree = "<group>"; };
+		CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 				CB8A118D27483EC100442B6A /* ContentView.swift */,
 				451840B827484FC500C390F0 /* HomeView.swift */,
 				451840BD2748538300C390F0 /* SavingsView.swift */,
+				CBF4081E2748F561000510D0 /* TipDetailView.swift */,
 				451840BF2748538F00C390F0 /* UsageView.swift */,
 			);
 			path = application;
@@ -91,6 +96,7 @@
 				451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */,
 				451840C627485FA900C390F0 /* Card.swift */,
 				451840C82748E88C00C390F0 /* FilterTag.swift */,
+				CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */,
 				451840B727484DAD00C390F0 /* Extensions.swift in Sources */,
 				CBF4081D2748E860000510D0 /* Categories.swift in Sources */,
 				451840BE2748538300C390F0 /* SavingsView.swift in Sources */,
@@ -217,6 +224,7 @@
 				451840C92748E88C00C390F0 /* FilterTag.swift in Sources */,
 				451840B927484FC600C390F0 /* HomeView.swift in Sources */,
 				CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */,
+				CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */,
 				451840C727485FA900C390F0 /* Card.swift in Sources */,
 				451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */,
 				CBF408172748E647000510D0 /* ProgressRing.swift in Sources */,
