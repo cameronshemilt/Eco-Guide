@@ -17,7 +17,7 @@ struct ContentView: View {
             }
             .background(Color.backgroundColor)
             .tabItem {
-                Label("Home", systemSymbol: .house)
+                Label("Home", systemSymbol: .houseFill)
             }
             
             TabViewElement {
@@ -34,7 +34,7 @@ struct ContentView: View {
             }
             .background(Color.redBackgroundColor)
             .tabItem {
-                Label("Usage", systemSymbol: .carFill)
+                Label("Usage", systemSymbol: .flameFill)
             }
         }
     }

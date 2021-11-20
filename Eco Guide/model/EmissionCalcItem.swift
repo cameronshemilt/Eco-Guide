@@ -19,26 +19,25 @@ struct EmissionCalcItem: Equatable {
     }
 }
 
-#warning("TODO: Add calculations")
 extension EmissionCalcItem {
     static let items: [EmissionCalcItem] = [
         .init(symbol: .carFill, name: "Car Trip", unit: "kM", placeholder: "Distance", callback: { distance in
-            return distance
+            return EcoCalculator.carEmission(km: distance, isElectric: false)
         }),
         .init(symbol: .airplaneDeparture, name: "Flight", unit: "h", placeholder: "Duration", callback: { duration in
-            return duration
+            return EcoCalculator.plane(h: duration)
         }),
         .init(symbol: .forkKnife, name: "Meat", unit: "kG", placeholder: "Weight", callback: { weight in
-            return weight
+            return EcoCalculator.meat(kg: weight)
         }),
         .init(symbol: .tortoiseFill, name: "Plastic", unit: "Bottles", placeholder: "Amount", callback: { amount in
-            return amount
+            return EcoCalculator.plastic(bottles: amount)
         }),
         .init(symbol: .trashFill, name: "Trash", unit: "Bags", placeholder: "Amount", callback: { amount in
-            return amount
+            return EcoCalculator.trash(kg: 32 * amount)
         }),
         .init(symbol: .newspaperFill, name: "Paper", unit: "sheets", placeholder: "Aount", callback: { amount in
-            return amount
+            return EcoCalculator.paper(kg: 0.005 * amount)
         }),
     ]
 }

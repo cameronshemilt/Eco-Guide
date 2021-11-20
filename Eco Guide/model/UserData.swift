@@ -44,7 +44,7 @@ enum Diet: String, CaseIterable {
 }
 
 enum CarDistance: String, CaseIterable {
-    case underTen, tenToThirty, thirtyToHundred, overHundred
+    case aboutZero, underTen, tenToThirty, thirtyToHundred, overHundred
     
     var usageLabel: String {
         return self.onboardingLabel
@@ -52,14 +52,31 @@ enum CarDistance: String, CaseIterable {
     
     var onboardingLabel: String {
         switch self {
+        case .aboutZero:
+            return "about zero"
         case .underTen:
-            return "under 10 km"
+            return "5-10 km/day"
         case .tenToThirty:
-            return "10-30 km"
+            return "10-30 km/day"
         case .thirtyToHundred:
-            return "30-100 km"
+            return "30-100 km/day"
         case .overHundred:
-            return "over 100 km"
+            return "over 100 km/day"
+        }
+    }
+    
+    var number: Double {
+        switch self {
+        case .aboutZero:
+            return 0.2
+        case .underTen:
+            return 8
+        case .tenToThirty:
+            return 20
+        case .thirtyToHundred:
+            return 70
+        case .overHundred:
+            return 140
         }
     }
 }
@@ -96,6 +113,21 @@ enum Household: String, CaseIterable {
             return "four or more"
         }
     }
+    
+    var numOfPeople: Int {
+        switch self {
+        case .one:
+            return 1
+        case .two:
+            return 2
+        case .three:
+            return 3
+        case .four:
+            return 4
+        case .fiveOrMore:
+            return 5
+        }
+    }
 }
 
 enum Trash: String, CaseIterable {
@@ -130,6 +162,21 @@ enum Trash: String, CaseIterable {
             return "four or more"
         }
     }
+    
+    var num: Double {
+        switch self {
+        case .lessThanOne:
+            return 0.5
+        case .one:
+            return 1
+        case .two:
+            return 2
+        case .three:
+            return 3
+        case .fourOrMore:
+            return 5
+        }
+    }
 }
 
 class EcoCalculator: ObservableObject {
@@ -141,68 +188,93 @@ class EcoCalculator: ObservableObject {
     }
     @AppStorage(Defaults.trash) private var trash: Trash = .one {
         willSet {
-            // Call objectWillChange manually since @AppStorage is not published
             objectWillChange.send()
         }
     }
     @AppStorage(Defaults.driving) private var driving: CarDistance = .underTen {
         willSet {
-            // Call objectWillChange manually since @AppStorage is not published
             objectWillChange.send()
         }
     }
     @AppStorage(Defaults.diet) private var diet: Diet = .dailyMeat {
         willSet {
-            // Call objectWillChange manually since @AppStorage is not published
             objectWillChange.send()
         }
     }
     
     var netEmission: Double {
+#warning("TODO")
         return 4200
     }
-
+    
     var sumEmission: Double {
+#warning("TODO")
         return 1800
     }
-
+    
     // MARK: Calc Emissions with UserDefaults
     var carEmission: Double {
-        return 42
+        return EcoCalculator.carEmission(km: Double(driving.number), isElectric: false)  * 365
     }
     var electricityEmission: Double {
-        return 42
+        switch household {
+        case .one:
+            return 0.35 * 1600
+        case .two:
+            return 0.35 * 2300
+        case .three:
+            return 0.35 * 2800
+        case .four:
+            return 0.35 * 3200
+        case .fiveOrMore:
+            return 0.35 * 3500
+        }
     }
     var foodEmission: Double {
-        return 42
+        switch diet {
+        case .vegan:
+            return 6.4 * 365
+        case .vegetarian:
+            return 8.4 * 365
+        case .pescetarian:
+            return 8.6 * 365
+        case .littleMeat:
+            return 11 * 365
+        case .dailyMeat:
+            return 15.8 * 365
+        }
     }
     var wasteEmission: Double {
-        return 42
+        return EcoCalculator.trash(kg: 457) * trash.num
     }
     var waterEmission: Double {
-        return 42
+        return 0.00035 * 147 * 365 * Double(household.numOfPeople)
     }
     var heatingEmission: Double {
-        return 42
+#warning("TODO")
+        return 888
     }
-
+    
     // MARK: Static Funcs
     static func carEmission(km: Double, isElectric: Bool) -> Double {
-        return 42
+        if isElectric {
+            return 0.05 * km
+        }
+        return 0.15 * km
     }
-    static func trash(litres: Double) -> Double {
-        return 42
+    static func trash(kg: Double) -> Double {
+        return 0.5 * kg
     }
     static func plastic(bottles: Double) -> Double {
-        return 42
+        return 0.12 * bottles
     }
-    static func paper(grams: Double) -> Double {
-        return 42
+    static func paper(kg: Double) -> Double {
+        return 0.2 * kg
     }
-    static func plane(km: Double) -> Double {
-        return 42
+    static func plane(h: Double) -> Double {
+        return 90 * h
     }
     static func meat(kg: Double) -> Double {
-        return 42
+        return 99 * kg
     }
 }
