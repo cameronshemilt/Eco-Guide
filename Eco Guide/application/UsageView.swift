@@ -9,13 +9,13 @@ import SwiftUI
 import SFSafeSymbols
 
 struct UsageView: View {
-    @State private var selectedCategory: Categories? = nil
-    
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject private var ecoCalculator = EcoCalculator()
     @AppStorage(Defaults.diet) private var diet: Diet = .vegan
     @AppStorage(Defaults.driving) private var driving: CarDistance = .tenToThirty
     @AppStorage(Defaults.household) private var household: Household = .one
     @AppStorage(Defaults.trash) private var trash: Trash = .one
+    @State private var selectedCategory: Categories? = nil
     @State private var selectedCalculator: EmissionCalcItem? = nil
     @State private var calcInput: String = ""
     @State private var calcResult: String = "-"
@@ -85,16 +85,44 @@ struct UsageView: View {
             UnitText(calcResult, unit: "KG CO2")
                 .foregroundColor(.red)
             
+            Button(action: {
+                if let num = Double(calcInput) {
+                    let entry = UsageEntry(context: moc)
+                    entry.timestamp = Date.now
+                    entry.co2 = item.callback(num)
+                    do {
+                        try moc.save()
+                    } catch {
+                        print("Could not save")
+                    }
+                    calcInput = ""
+                    calcResult = "-"
+                    selectedCalculator = nil
+                }
+            }, label: {
+                Label("Add", systemSymbol: .plus)
+                    .font(.system(size: 14, weight: .medium))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(calcResult != "-" ? Color.red : Color(uiColor: .systemGray4))
+                    .foregroundColor(calcResult != "-" ? Color.white : Color(uiColor: .systemGray))
+                    .cornerRadius(.infinity)
+            })
+                .padding(.top, -10)
+                .padding(.bottom, 10)
+                .disabled(calcResult == "-")
+            
             HStack {
                 TextField(item.placeholder, text: $calcInput)
                     .submitLabel(.go)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                    .onSubmit {
-                        if let num = Double(calcInput) {
+                    .multilineTextAlignment(.trailing)
+                    .onChange(of: calcInput) { input in
+                        if let num = Double(input) {
                             calcResult = item.callback(num).formattedUnitText
                         } else {
-                            calcResult = "?"
+                            calcResult = "-"
                         }
                     }
                 Text(item.unit)
