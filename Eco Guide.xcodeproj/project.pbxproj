@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		451840B727484DAD00C390F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840B627484DAD00C390F0 /* Extensions.swift */; };
 		451840B927484FC600C390F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840B827484FC500C390F0 /* HomeView.swift */; };
-		451840BC27484FF400C390F0 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 451840BB27484FF400C390F0 /* SFSafeSymbols */; };
 		451840BE2748538300C390F0 /* SavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BD2748538300C390F0 /* SavingsView.swift */; };
 		451840C02748538F00C390F0 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BF2748538F00C390F0 /* UsageView.swift */; };
 		451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */; };
 		451840C727485FA900C390F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C627485FA900C390F0 /* Card.swift */; };
+		451840CC2749020C00C390F0 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 451840CB2749020C00C390F0 /* SFSafeSymbols */; };
 		CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */; };
 		CB8A118E27483EC100442B6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118D27483EC100442B6A /* ContentView.swift */; };
 		CB8A119027483EC200442B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8A118F27483EC200442B6A /* Assets.xcassets */; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451840BC27484FF400C390F0 /* SFSafeSymbols in Frameworks */,
+				451840CC2749020C00C390F0 /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 			);
 			name = "Eco Guide";
 			packageProductDependencies = (
-				451840BB27484FF400C390F0 /* SFSafeSymbols */,
+				451840CB2749020C00C390F0 /* SFSafeSymbols */,
 			);
 			productName = "Eco Guide";
 			productReference = CB8A118827483EC100442B6A /* Eco Guide.app */;
@@ -183,7 +183,7 @@
 			);
 			mainGroup = CB8A117F27483EC100442B6A;
 			packageReferences = (
-				451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				451840CA2749020C00C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = CB8A118927483EC100442B6A /* Products */;
 			projectDirPath = "";
@@ -433,20 +433,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+		451840CA2749020C00C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = v3;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		451840BB27484FF400C390F0 /* SFSafeSymbols */ = {
+		451840CB2749020C00C390F0 /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 451840BA27484FF400C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			package = 451840CA2749020C00C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
 		};
 /* End XCSwiftPackageProductDependency section */

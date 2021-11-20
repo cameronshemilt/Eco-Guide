@@ -51,12 +51,14 @@ struct SavingsView: View {
                 Button("All", action: {
                     selectedCategory = nil
                 })
+                    .foregroundColor(selectedCategory == nil ? .white : .black)
                     .buttonStyle(TagButtonStyle(active: selectedCategory == nil, color: .green))
                 
                 ForEach(Categories.allCases, id: \.self) { category in
                     Button(category.name, action: {
                         selectedCategory = category
                     })
+                        .foregroundColor(selectedCategory == category ? .white : .black)
                         .buttonStyle(TagButtonStyle(active: selectedCategory == category, color: .green))
                 }
             }

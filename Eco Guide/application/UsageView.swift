@@ -6,45 +6,94 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct UsageView: View {
     @State private var selectedCategory: Categories? = nil
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 15) {
-                // Title
-                #warning("missing text: you use")
-                CarbonYearlyTitleView(value: -7)
-                    .foregroundColor(.red)
-                    .padding(.top, 45)
+            Group {
+                totalValue
+                    .padding(.vertical, 25)
+                
+                tagSelector
+                    .padding(.bottom, 5)
+
+                usageList
                     .padding(.bottom, 30)
                 
-                // filters
-                tagSelector
-                
-                // usage list
-                Card {
-                    VStack(alignment: .leading) {
-                        Text("Get started with basic savers!")
-                            .font(.title3)
-                            .bold()
-                        HStack(alignment: .top, spacing: 15) {
-                            Text("You have set yourself a goal of being carbon neutral.")
-                                .foregroundColor(.secondary)
-                            
-                            Circle()
-                                .frame(width: 80, height: 80)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                HStack {
+                    Text("Emission calculator").font(.title3.bold())
+                    Spacer(minLength: 0)
                 }
-                
-                
-                // emission calculator
-                
+                emissionCalc
             }
             .padding(.horizontal)
+        }
+    }
+    
+    private struct EmissionCalcItem {
+        let symbol: SFSymbol
+        let name: String
+    }
+    private let emissionCalcItems: [EmissionCalcItem] = [
+        .init(symbol: .carFill, name: "Car Trip"),
+        .init(symbol: .airplaneDeparture, name: "Flight"),
+        .init(symbol: .forkKnife, name: "Meat"),
+        .init(symbol: .trashFill, name: "Plastic"),
+        .init(symbol: .newspaperFill, name: "Paper"),
+        .init(symbol: .bagFill, name: "Clothes")
+    ]
+    private var emissionCalc: some View {
+        LazyVGrid(columns: [GridItem.init(.adaptive(minimum: 100, maximum: 300))]) {
+            ForEach(emissionCalcItems, id: \.name) { (item: EmissionCalcItem) in
+                Card {
+                    VStack(spacing: 10) {
+                        Image(systemSymbol: item.symbol)
+                            .font(.title.bold())
+                            .foregroundColor(.red)
+                        Text(item.name)
+                            .fontWeight(.semibold)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }
+            }
+        }
+    }
+    
+    private var usageList: some View {
+        Card {
+            HStack(spacing: 10) {
+                Image(systemSymbol: .carFill)
+                    .font(.title.bold())
+                    .foregroundColor(.red)
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Car")
+                        .font(.title2)
+                        .bold()
+                    Text("35km per Week")
+                }
+                Spacer()
+                Text("+7")
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.red)
+                VStack {
+                    Text("kg co2")
+                    Text("/ year")
+                }.textCase(.uppercase)
+            }
+        }
+    }
+    
+    private var totalValue: some View {
+        VStack{
+            Text("You use")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            CarbonYearlyTitleView(value: +739)
+                .foregroundColor(.red)
         }
     }
     
@@ -54,12 +103,14 @@ struct UsageView: View {
                 Button("All", action: {
                     selectedCategory = nil
                 })
+                    .foregroundColor(selectedCategory == nil ? .white : .black)
                     .buttonStyle(TagButtonStyle(active: selectedCategory == nil, color: .red))
                 
                 ForEach(Categories.allCases, id: \.self) { category in
                     Button(category.name, action: {
                         selectedCategory = category
                     })
+                        .foregroundColor(selectedCategory == category ? .white : .black)
                         .buttonStyle(TagButtonStyle(active: selectedCategory == category, color: .red))
                 }
             }

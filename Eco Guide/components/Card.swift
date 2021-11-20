@@ -17,7 +17,7 @@ struct Card<Content: View>: View {
 
     init(alignment: HorizontalAlignment = .center,
          spacing: CGFloat? = nil,
-         innerPadding: CGFloat = 21,
+         innerPadding: CGFloat = 17,
          color: Color = .white,
          shadow: Bool = true,
          @ViewBuilder content: () -> Content
@@ -36,7 +36,7 @@ struct Card<Content: View>: View {
         }
         .padding(padding)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 21)
                 .foregroundColor(color)
         )
         .shadow(color: shadow ? .black.opacity(0.16) : .clear, radius: 6, x: 0, y: 3)
