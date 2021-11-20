@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="TipEntry" representedClassName="TipEntry" syncable="YES" codeGenerationType="class">
-        <attribute name="co2" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21C5021h" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AcceptedTipEntry" representedClassName="AcceptedTipEntry" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
@@ -12,7 +11,7 @@
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="TipEntry" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="AcceptedTipEntry" positionX="-63" positionY="-18" width="128" height="59"/>
         <element name="UsageEntry" positionX="-63" positionY="9" width="128" height="89"/>
     </elements>
 </model>

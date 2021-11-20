@@ -8,17 +8,10 @@
 import SFSafeSymbols
 
 enum Categories: String, CaseIterable {
-    case living, transport, other
+    case living, transport, nutrition, wasteReduction, housing, other
     
     init(_ string: String) {
-        switch string {
-        case "living":
-            self = .living
-        case "transport":
-            self = .transport
-        default:
-            self = .other
-        }
+        self = Categories(rawValue: string) ?? .other
     }
     
     var images: [String] {
@@ -28,6 +21,12 @@ enum Categories: String, CaseIterable {
         case .living:
             return []
         case .transport:
+            return []
+        case .nutrition:
+            return []
+        case .wasteReduction:
+            return []
+        case .housing:
             return []
         case .other:
             return []
@@ -40,6 +39,12 @@ enum Categories: String, CaseIterable {
             return .houseFill
         case .transport:
             return .carFill
+        case .nutrition:
+            return .forkKnife
+        case .wasteReduction:
+            return .trashFill
+        case .housing:
+            return .houseFill
         case .other:
             return .ellipsis
         }
@@ -51,6 +56,12 @@ enum Categories: String, CaseIterable {
             return "Living"
         case .transport:
             return "Transport"
+        case .nutrition:
+            return "Nutrition"
+        case .wasteReduction:
+            return "Waste Reduction"
+        case .housing:
+            return "Housing"
         case .other:
             return "Other"
         }
