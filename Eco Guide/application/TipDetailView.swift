@@ -23,7 +23,7 @@ struct TipDetailView: View {
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                CarbonYearlyTitleView(value: Int(tip.calback()), title: "")
+                CarbonYearlyTitleView(value: tip.calback(), title: "")
                     .foregroundColor(.green)
             }
             .padding(.bottom, 35)

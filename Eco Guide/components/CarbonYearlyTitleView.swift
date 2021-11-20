@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CarbonYearlyTitleView: View {
-    let value: Int
+    let value: Double
     let title: String
     
     var body: some View {
@@ -18,7 +18,7 @@ struct CarbonYearlyTitleView: View {
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             VStack(alignment: .center, spacing: 0) {
-                Text("\(value > 0 ? "+" : "")\(value)")
+                Text(value.formattedUnitText)
                     .font(.system(.largeTitle, design: .rounded).bold())
                     .padding(.top, -4)
                     .padding(.trailing, 4)

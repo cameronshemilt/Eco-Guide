@@ -29,3 +29,11 @@ struct TagButtonStyle: ButtonStyle {
     }
 }
 
+extension Double {
+    var formattedUnitText: String {
+        if self >= 0 {
+            return "+\(Int(self))"
+        }
+        return "\(Int(self))"
+    }
+}

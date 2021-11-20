@@ -11,16 +11,18 @@ import SFSafeSymbols
 struct UsageView: View {
     @State private var selectedCategory: Categories? = nil
     
+    @ObservedObject private var ecoCalculator = EcoCalculator()
+    
     var body: some View {
         ScrollView {
             Group {
-                CarbonYearlyTitleView(value: +739, title: "You use")
+                CarbonYearlyTitleView(value: ecoCalculator.sumEmission, title: "You use")
                     .foregroundColor(.red)
                     .padding(.vertical, 25)
                 
                 tagSelector
                     .padding(.bottom, 5)
-
+                
                 usageList
                     .padding(.bottom, 30)
                 
@@ -64,31 +66,13 @@ struct UsageView: View {
     }
     
     private var usageList: some View {
-        Card {
-            HStack(spacing: 10) {
-                Image(systemSymbol: .carFill)
-                    .font(.title.bold())
-                    .foregroundColor(.red)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("Car")
-                        .font(.title2)
-                        .bold()
-                    Text("35km per Week")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                Spacer()
-                Text("+728")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .bold()
-                    .foregroundColor(.red)
-                VStack(alignment: .leading) {
-                    Text("kg co2")
-                    Text("/ year")
-                }
-                .font(.system(size: 11, weight: .medium, design: .rounded))
-                .textCase(.uppercase)
-            }
+        VStack(spacing: 15) {
+            UsageCard(title: "Car", subtitle: "35km per Week", systemSymbol: .carFill, savings: ecoCalculator.carEmission)
+            UsageCard(title: "Electricity", subtitle: "For 3 people", systemSymbol: .boltFill, savings: ecoCalculator.electricityEmission)
+            UsageCard(title: "Food", subtitle: "Vegetarian", systemSymbol: .forkKnife, savings: ecoCalculator.foodEmission)
+            UsageCard(title: "Waste", subtitle: "2 bags per week", systemSymbol: .trashFill, savings: ecoCalculator.wasteEmission)
+            UsageCard(title: "Water", subtitle: "For 3 people", systemSymbol: .dropFill, savings: ecoCalculator.waterEmission)
+            UsageCard(title: "Heating", subtitle: "For 3 people", systemSymbol: .flameFill, savings: ecoCalculator.heatingEmission)
         }
     }
         
@@ -108,6 +92,45 @@ struct UsageView: View {
                         .foregroundColor(selectedCategory == category ? .white : .black)
                         .buttonStyle(TagButtonStyle(active: selectedCategory == category, color: .red))
                 }
+            }
+        }
+    }
+}
+
+fileprivate struct UsageCard: View {
+    let title: String
+    let subtitle: String
+    let systemSymbol: SFSymbol
+    let savings: Double
+    
+//    let visible: Bool
+    
+    var body: some View {
+        Card {
+            HStack(spacing: 10) {
+                Image(systemSymbol: systemSymbol)
+                    .font(.title.bold())
+                    .foregroundColor(.primary)
+                    .frame(width: 30)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.title2)
+                        .bold()
+                    Text(subtitle)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                Text(savings.formattedUnitText)
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .bold()
+                    .foregroundColor(.red)
+                VStack(alignment: .leading) {
+                    Text("kg co2")
+                    Text("/ year")
+                }
+                .font(.system(size: 11, weight: .medium, design: .rounded))
+                .textCase(.uppercase)
             }
         }
     }
