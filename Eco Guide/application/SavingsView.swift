@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct SavingsView: View {
     @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
@@ -31,7 +32,7 @@ struct SavingsView: View {
                     .padding(.vertical, 25)
                 tagSelector
                     .padding(.bottom, 5)
-                if showBeginner {
+                if showBeginner && selectedCategory == nil {
                     basicSaversCard
                 }
                 tipsList
@@ -96,12 +97,12 @@ struct SavingsView: View {
     
     private var tipsList: some View {
         VStack(spacing: 15) {
-            ForEach(openTips) { tip in
+            ForEach(openTips+acceptedTips) { tip in
                 Button(action: { selectedTip = tip }) {
                     Card(alignment: .leading) {
                         HStack {
                             if acceptedTips.contains(where: { $0.id == tip.id }) {
-                                Image(systemName: "checkmark.circle")
+                                Image(systemSymbol: .checkmarkCircleFill)
                                     .foregroundColor(.green)
                             }
                             Text(tip.title)
