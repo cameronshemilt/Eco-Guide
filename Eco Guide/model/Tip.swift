@@ -20,14 +20,14 @@ extension Tip {
         Tip(id: 1, title: "Using renewable energy",
             description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
             category: .living,
-            calback: { return 539 }),
+            calback: { return -539 }),
         Tip(id: 2, title: "Take shorter showers",
             description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
             category: .living,
-            calback: { return 829 }),
+            calback: { return -829 }),
         Tip(id: 3, title: "Change to an electric car",
             description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
             category: .transport,
-            calback: { return 183 }),
+            calback: { return -183 }),
     ]
 }

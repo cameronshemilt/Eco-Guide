@@ -19,17 +19,27 @@ struct TipDetailView: View {
                 .padding(.bottom, 20)
             
             Card {
-                Text("Based on ous calculations,\nyou could save up to").multilineTextAlignment(.center)
+                Text("Based on ous calculations,\nyou could save up to")
+                    .multilineTextAlignment(.center)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                CarbonYearlyTitleView(value: -739, title: "")
+                CarbonYearlyTitleView(value: Int(tip.calback()), title: "")
                     .foregroundColor(.green)
             }
             .padding(.bottom, 35)
             
             Text(tip.description)
                 .multilineTextAlignment(.center)
+                .padding(.bottom, 20)
             
+            HStack {
+                Text("This will get you")
+                UnitText("2", unit: "%")
+                    .foregroundColor(.green)
+                Text("closer")
+            }
+            Text("to your total goal.")
+                .padding(.top, -16)
             Spacer()
             Button("Accept", action: {
                 let entry = AcceptedTipEntry(context: moc)

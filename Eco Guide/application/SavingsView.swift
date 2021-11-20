@@ -10,6 +10,7 @@ import SwiftUI
 struct SavingsView: View {
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
+    @State private var showBeginner = true
     let tips = Tip.mockTips
     
     var body: some View {
@@ -20,7 +21,9 @@ struct SavingsView: View {
                     .padding(.vertical, 25)
                 tagSelector
                     .padding(.bottom, 5)
-                basicSaversCard
+                if showBeginner {
+                    basicSaversCard
+                }
                 tipsList
                     .padding(.bottom)
             }
@@ -71,9 +74,7 @@ struct SavingsView: View {
             .frame(maxWidth: .infinity)
         }
         .overlay(alignment: .topTrailing) {
-            Button(action: {
-#warning("todo: functionality")
-            }, label: {
+            Button(action: { showBeginner = false }, label: {
                 Image(systemSymbol: .xmark)
                     .font(.body.bold())
             })
