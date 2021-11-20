@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import SFSafeSymbols
+import Introspect
 
 struct ContentView: View {
     var body: some View {
@@ -37,6 +38,11 @@ struct ContentView: View {
                 Label("Usage", systemSymbol: .flameFill)
             }
         }
+        .introspectTabBarController(customize: { controller in
+            let appearance = controller.tabBar.standardAppearance
+            appearance.configureWithDefaultBackground()
+            controller.tabBar.scrollEdgeAppearance = appearance
+        })
     }
 }
 

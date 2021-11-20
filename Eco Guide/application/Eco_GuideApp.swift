@@ -15,6 +15,7 @@ struct Eco_GuideApp: App {
         WindowGroup {
             ContentView()
                 .statusBar(hidden: true)
+                .preferredColorScheme(.light)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

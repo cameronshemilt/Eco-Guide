@@ -16,7 +16,9 @@
 		451840CC2749020C00C390F0 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 451840CB2749020C00C390F0 /* SFSafeSymbols */; };
 		451840CE274903D600C390F0 /* QuickTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840CD274903D600C390F0 /* QuickTips.swift */; };
 		451840D2274921FF00C390F0 /* StoryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840D1274921FF00C390F0 /* StoryPreview.swift */; };
+		454FE3862749A8B0005BEFDF /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 454FE3852749A8B0005BEFDF /* Introspect */; };
 		455B65D02749813600261E76 /* FunFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455B65CF2749813600261E76 /* FunFact.swift */; };
+		455B65D227499D4300261E76 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455B65D127499D4300261E76 /* Forest.swift */; };
 		CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */; };
 		CB8A118E27483EC100442B6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118D27483EC100442B6A /* ContentView.swift */; };
 		CB8A119027483EC200442B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8A118F27483EC200442B6A /* Assets.xcassets */; };
@@ -44,6 +46,7 @@
 		451840CD274903D600C390F0 /* QuickTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTips.swift; sourceTree = "<group>"; };
 		451840D1274921FF00C390F0 /* StoryPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryPreview.swift; sourceTree = "<group>"; };
 		455B65CF2749813600261E76 /* FunFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFact.swift; sourceTree = "<group>"; };
+		455B65D127499D4300261E76 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		CB8A118827483EC100442B6A /* Eco Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco_GuideApp.swift; sourceTree = "<group>"; };
 		CB8A118D27483EC100442B6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				451840CC2749020C00C390F0 /* SFSafeSymbols in Frameworks */,
+				454FE3862749A8B0005BEFDF /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +116,7 @@
 				CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */,
 				451840CD274903D600C390F0 /* QuickTips.swift */,
 				451840D1274921FF00C390F0 /* StoryPreview.swift */,
+				455B65D127499D4300261E76 /* Forest.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			name = "Eco Guide";
 			packageProductDependencies = (
 				451840CB2749020C00C390F0 /* SFSafeSymbols */,
+				454FE3852749A8B0005BEFDF /* Introspect */,
 			);
 			productName = "Eco Guide";
 			productReference = CB8A118827483EC100442B6A /* Eco Guide.app */;
@@ -202,6 +208,7 @@
 			mainGroup = CB8A117F27483EC100442B6A;
 			packageReferences = (
 				451840CA2749020C00C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				454FE3842749A8B0005BEFDF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = CB8A118927483EC100442B6A /* Products */;
 			projectDirPath = "";
@@ -237,6 +244,7 @@
 				451840C02748538F00C390F0 /* UsageView.swift in Sources */,
 				CB8A119527483EC200442B6A /* Persistence.swift in Sources */,
 				CB8A118E27483EC100442B6A /* ContentView.swift in Sources */,
+				455B65D227499D4300261E76 /* Forest.swift in Sources */,
 				451840B927484FC600C390F0 /* HomeView.swift in Sources */,
 				CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */,
 				CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */,
@@ -388,7 +396,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -418,7 +426,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,6 +473,14 @@
 				kind = branch;
 			};
 		};
+		454FE3842749A8B0005BEFDF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -472,6 +488,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 451840CA2749020C00C390F0 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		454FE3852749A8B0005BEFDF /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 454FE3842749A8B0005BEFDF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 #warning("hold gesture")
-#warning("close button")
 
 struct QuickTips: View {
     @Environment(\.dismiss) private var dismiss

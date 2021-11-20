@@ -13,34 +13,61 @@ struct HomeView: View {
 
     @State private var showCategoryFacts: Categories? = nil
     
+    var numberOfTrees: Int {
+        #warning("todo")
+        return 15
+    }
+    
     var body: some View {
-        ScrollView {
-            Group {
-                // Title
-                CarbonYearlyTitleView(value: ecoCalculator.netEmission, title: "Total Footprint")
-                    .foregroundColor(ecoCalculator.netEmission <= goalEmission ? (ecoCalculator.netEmission <= 0 ? .green : .orange) : .red)
-                    .padding(.vertical, 25)
+            ZStack {
+                // forest section
+                VStack {
+                    Spacer()
+                    EquatableView(content: Forest(count: numberOfTrees))
+                        .offset(x: 0, y: 50)
+                }
 
-                goalCard
-                
-                // Story Section
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 0) {
-                        ForEach(Categories.allCases, id: \.self) { category in
-                            StoryPreview(category: category, seen: false, size: 50)
-                                .padding(5)
-                                .onTapGesture {
-                                    showCategoryFacts = category
-                                }
+                VStack {
+                    // Title
+                    CarbonYearlyTitleView(value: ecoCalculator.netEmission, title: "Total Footprint")
+                        .foregroundColor(ecoCalculator.netEmission <= goalEmission ? (ecoCalculator.netEmission <= 0 ? .green : .orange) : .red)
+                        .padding(.vertical, 25)
+                    
+                    goalCard
+                    
+                    // Story Section
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 0) {
+                            ForEach(Categories.allCases, id: \.self) { category in
+                                StoryPreview(category: category, seen: false, size: 50)
+                                    .padding(5)
+                                    .onTapGesture {
+                                        showCategoryFacts = category
+                                    }
+                            }
                         }
                     }
+                    .padding(.vertical)
+                    Spacer().frame(maxHeight: 50)
+                    
+                    VStack(spacing: 5) {
+                        Text("The amount of CO2 you are\n saving is equal to")
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        VStack(spacing: 0) {
+                            Text("\(numberOfTrees)")
+                                .bold()
+                                .font(.system(size: 45, weight: .bold, design: .rounded))
+                                .foregroundColor(.green)
+                            Text("TREES")
+                                .bold()
+                                .font(.system(.body, design: .rounded))
+                                .foregroundColor(.green)
+                        }
+                    }
+                    Spacer()
                 }
-                .padding(.vertical)
-                
-                // chart section
-                #warning("todo: chart section")
-            }
-            .padding(.horizontal)
+                .padding(.horizontal)
         }
         .fullScreenCover(item: $showCategoryFacts) { cate in
             if let fact = FunFact.data.first(where: { $0.category == cate }) {
