@@ -5,6 +5,8 @@
 //  Created by Cameron Shemilt on 20.11.21.
 //
 
+import SFSafeSymbols
+
 enum Categories: String, CaseIterable {
     case living, transport, other
     
@@ -29,6 +31,17 @@ enum Categories: String, CaseIterable {
             return []
         case .other:
             return []
+        }
+    }
+    
+    var systemSymbol: SFSymbol {
+        switch self {
+        case .living:
+            return .houseFill
+        case .transport:
+            return .carFill
+        case .other:
+            return .ellipsis
         }
     }
     

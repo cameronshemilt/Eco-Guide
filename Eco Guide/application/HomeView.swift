@@ -28,21 +28,22 @@ struct HomeView: View {
                         }
                         .padding(.trailing)
                         Spacer(minLength: 0)
-                        Circle()
-                            .frame(width: 80, height: 80)
+                        
+                        ProgressRing(0.78, color: .green)
+                            .diameter(80)
+                            .padding(5)
                     }
                     .frame(maxWidth: .infinity)
                 }
                 
                 // Story Section
                 HStack {
-                    Circle().frame(width: 50, height: 50)
-                    Spacer()
-                    Circle().frame(width: 50, height: 50)
-                    Spacer()
-                    Circle().frame(width: 50, height: 50)
-                    Spacer()
-                    Circle().frame(width: 50, height: 50)
+                    ForEach(Categories.allCases, id: \.self) { category in
+                        StoryPreview(category: category, seen: false, size: 50)
+                        if Categories.allCases.last != category {
+                            Spacer()
+                        }
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -52,6 +53,9 @@ struct HomeView: View {
             }
             .padding(.horizontal)
         }
+//        .fullScreenCover(isPresented: $story) {
+//            QuickTips(tips: Tip.mockTips)
+//        }
     }
 }
 
