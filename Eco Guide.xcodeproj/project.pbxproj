@@ -58,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8A119627483EC200442B6A /* Eco_Guide.xcdatamodeld */,
+				CB8A119427483EC200442B6A /* Persistence.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -108,7 +109,6 @@
 				451840C2274854D500C390F0 /* application */,
 				451840C3274854E800C390F0 /* components */,
 				451840B627484DAD00C390F0 /* Extensions.swift */,
-				CB8A119427483EC200442B6A /* Persistence.swift */,
 				CB8A118F27483EC200442B6A /* Assets.xcassets */,
 				CB8A119127483EC200442B6A /* Preview Content */,
 			);
