@@ -14,6 +14,7 @@ struct Eco_GuideApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .statusBar(hidden: true)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

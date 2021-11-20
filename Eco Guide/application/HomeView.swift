@@ -10,11 +10,10 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 15) {
+            Group {
                 // Title
-                CarbonYearlyTitleView(value: -7)
-                    .padding(.top, 45)
-                    .padding(.bottom, 30)
+                totalValue
+                    .padding(.vertical, 25)
 
                 // Goal card
                 Card {
@@ -56,6 +55,16 @@ struct HomeView: View {
 //        .fullScreenCover(isPresented: $story) {
 //            QuickTips(tips: Tip.mockTips)
 //        }
+    }
+    
+    private var totalValue: some View {
+        VStack{
+            Text("Total Footprint")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            CarbonYearlyTitleView(value: -7)
+                .foregroundColor(.green)
+        }
     }
 }
 
