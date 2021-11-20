@@ -19,6 +19,19 @@ enum Categories: String, CaseIterable {
         }
     }
     
+    var images: [String] {
+        return ["bulb-min", "food-min", "fairn-min", "forest-min", "lake-min", "plastic-min", "road-min"]
+        #warning("todo categorize images")
+        switch self {
+        case .living:
+            return []
+        case .transport:
+            return []
+        case .other:
+            return []
+        }
+    }
+    
     var name: String {
         switch self {
         case .living:

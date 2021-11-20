@@ -27,13 +27,7 @@ struct QuickTips: View {
     
     var body: some View {
         VStack {
-            HStack {
-                ForEach(self.tips.indices) { x in
-                    ProgressBar(value: min(max((CGFloat(self.storyTimer.progress) - CGFloat(x)), 0.0), 1.0))
-                        .animation(.linear, value: self.storyTimer.progress)
-                }
-            }
-            .foregroundColor(.white)
+            progressBars
             
             Spacer()
             
@@ -56,7 +50,7 @@ struct QuickTips: View {
         .padding(.horizontal, 30)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .background {
-            Image("forest")
+            Image(backgroundImageName)
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
@@ -64,21 +58,37 @@ struct QuickTips: View {
             Color.black
                 .ignoresSafeArea()
                 .opacity(0.3)
-            HStack {
-                Color.clear.contentShape(Rectangle())
-                    .onTapGesture { self.storyTimer.advance(by: -1) }
-                Color.clear.contentShape(Rectangle())
-                    .onTapGesture { self.storyTimer.advance(by: 1) }
-            }
+            splitTapGesture
         }
         .multilineTextAlignment(.center)
         .foregroundColor(.white)
         .onAppear { self.storyTimer.start() }
         .onChange(of: storyTimer.done) { done in
-            if done {
-                dismiss()
+            if done { dismiss() }
+        }
+    }
+    
+    private var splitTapGesture: some View {
+        HStack {
+            Color.clear.contentShape(Rectangle())
+                .onTapGesture { self.storyTimer.advance(by: -1) }
+            Color.clear.contentShape(Rectangle())
+                .onTapGesture { self.storyTimer.advance(by: 1) }
+        }
+    }
+    
+    private var progressBars: some View {
+        HStack {
+            ForEach(self.tips.indices) { x in
+                ProgressBar(value: min(max((CGFloat(self.storyTimer.progress) - CGFloat(x)), 0.0), 1.0))
+                    .animation(.linear, value: self.storyTimer.progress)
             }
         }
+        .foregroundColor(.white)
+    }
+    
+    private var backgroundImageName: String {
+        return tips[tipIndex].category.images[tipIndex % tips[tipIndex].category.images.count]
     }
 }
 
