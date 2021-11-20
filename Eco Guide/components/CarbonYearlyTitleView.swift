@@ -13,10 +13,12 @@ struct CarbonYearlyTitleView: View {
     
     var body: some View {
         VStack{
-            Text(title)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+            if !title.isEmpty {
+                Text(title)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
             VStack(alignment: .center, spacing: 0) {
                 Text(value.formattedUnitText)
                     .font(.system(.largeTitle, design: .rounded).bold())
@@ -40,6 +42,10 @@ struct CarbonYearlyTitleView_Previews: PreviewProvider {
             CarbonYearlyTitleView(value: 7573, title: "You Use")
                 .foregroundColor(.red)
                 .padding(.top, 30)
+            
+            Card {
+                CarbonYearlyTitleView(value: 7573, title: "")
+            }
             Spacer()
         }
     }
