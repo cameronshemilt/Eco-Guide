@@ -22,7 +22,7 @@ struct QuickTips: View {
     
     init(tips: [Tip]) {
         self.tips = tips
-        self.storyTimer = StoryTimer(items: tips.count, interval: 5.0)
+        self.storyTimer = StoryTimer(items: tips.count, interval: 10.0)
     }
     
     var body: some View {
