@@ -10,9 +10,7 @@ import SwiftUI
 struct SavingsView: View {
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
-    let tips = [Tip(id: 1, title: "Using renewable energy",
-                    description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
-                    category: .living)]
+    let tips = Tip.mockTips
     
     var body: some View {
         ScrollView {

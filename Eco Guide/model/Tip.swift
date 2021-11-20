@@ -13,3 +13,17 @@ struct Tip: Identifiable {
     let description: String
     let category: Categories
 }
+
+extension Tip {
+    static let mockTips = [
+        Tip(id: 1, title: "Using renewable energy",
+            description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
+            category: .living),
+        Tip(id: 2, title: "Take shorter showers",
+            description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
+            category: .living),
+        Tip(id: 3, title: "Change to an electric car",
+            description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
+            category: .transport),
+    ]
+}
