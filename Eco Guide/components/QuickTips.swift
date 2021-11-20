@@ -65,6 +65,14 @@ struct QuickTips: View {
         .onChange(of: storyTimer.done) { done in
             if done { dismiss() }
         }
+        .gesture(
+            DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                .onEnded({ value in
+                    if value.translation.height > 0 {
+                        dismiss()
+                    }
+                })
+        )
     }
     
     private var splitTapGesture: some View {
