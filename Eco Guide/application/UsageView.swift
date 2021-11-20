@@ -68,21 +68,25 @@ struct UsageView: View {
                 Image(systemSymbol: .carFill)
                     .font(.title.bold())
                     .foregroundColor(.red)
-                VStack(alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 3) {
                     Text("Car")
                         .font(.title2)
                         .bold()
                     Text("35km per Week")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
                 Spacer()
-                Text("+7")
-                    .font(.title)
+                Text("+728")
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
                     .bold()
                     .foregroundColor(.red)
-                VStack {
+                VStack(alignment: .leading) {
                     Text("kg co2")
                     Text("/ year")
-                }.textCase(.uppercase)
+                }
+                .font(.system(size: 11, weight: .medium, design: .rounded))
+                .textCase(.uppercase)
             }
         }
     }
