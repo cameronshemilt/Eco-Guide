@@ -9,6 +9,10 @@ import SwiftUI
 
 struct SavingsView: View {
     @State private var selectedCategory: Categories? = nil
+    @State private var selectedTip: Tip? = nil
+    let tips = [Tip(id: 1, title: "Using renewable energy",
+                    description: "Lorem ipsum dolor sit met et circensum, vite cum lautet amica Quintus circus et domicil marcus Aurelius familia.",
+                    category: .living)]
     
     var body: some View {
         ScrollView {
@@ -22,6 +26,12 @@ struct SavingsView: View {
                     .padding(.bottom)
             }
             .padding(.horizontal)
+        }
+        .sheet(item: $selectedTip) { tip in
+            NavigationView {
+                TipDetailView(tip: tip)
+                    .background(Color.backgroundColor)
+            }
         }
     }
     
@@ -84,19 +94,22 @@ struct SavingsView: View {
     
     private var tipsList: some View {
         VStack(spacing: 15) {
-            ForEach(0..<10) { _ in
-                Card(alignment: .leading) {
-                    Text("Title")
-                        .font(.title2)
-                    Text("Description")
-                        .foregroundColor(.secondary)
-                    HStack {
-                        Spacer()
-                        UnitText("-73", unit: "KG CO2")
-                            .fontSize(30)
+            ForEach(tips) { tip in
+                Button(action: { selectedTip = tip }) {
+                    Card(alignment: .leading) {
+                        Text(tip.title)
+                            .font(.title2)
+                        Text(tip.description)
+                            .foregroundColor(.secondary)
+                        HStack {
+                            Spacer()
+                            UnitText("-73", unit: "KG CO2")
+                                .fontSize(30)
+                        }
+                        .foregroundColor(.green)
                     }
-                    .foregroundColor(.green)
                 }
+                .buttonStyle(.plain)
             }
         }
     }
