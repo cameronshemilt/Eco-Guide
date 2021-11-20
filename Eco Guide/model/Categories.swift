@@ -18,4 +18,15 @@ enum Categories: String, CaseIterable {
             self = .other
         }
     }
+    
+    var name: String {
+        switch self {
+        case .living:
+            return "Living"
+        case .transport:
+            return "Transport"
+        case .other:
+            return "Other"
+        }
+    }
 }

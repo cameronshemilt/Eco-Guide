@@ -14,6 +14,7 @@
 		451840C02748538F00C390F0 /* UsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840BF2748538F00C390F0 /* UsageView.swift */; };
 		451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */; };
 		451840C727485FA900C390F0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C627485FA900C390F0 /* Card.swift */; };
+		451840C92748E88C00C390F0 /* FilterTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451840C82748E88C00C390F0 /* FilterTag.swift */; };
 		CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */; };
 		CB8A118E27483EC100442B6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A118D27483EC100442B6A /* ContentView.swift */; };
 		CB8A119027483EC200442B6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8A118F27483EC200442B6A /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		451840BF2748538F00C390F0 /* UsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageView.swift; sourceTree = "<group>"; };
 		451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonYearlyTitleView.swift; sourceTree = "<group>"; };
 		451840C627485FA900C390F0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		451840C82748E88C00C390F0 /* FilterTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTag.swift; sourceTree = "<group>"; };
 		CB8A118827483EC100442B6A /* Eco Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8A118B27483EC100442B6A /* Eco_GuideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eco_GuideApp.swift; sourceTree = "<group>"; };
 		CB8A118D27483EC100442B6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				CBF408182748E662000510D0 /* UnitText.swift */,
 				451840C4274855AD00C390F0 /* CarbonYearlyTitleView.swift */,
 				451840C627485FA900C390F0 /* Card.swift */,
+				451840C82748E88C00C390F0 /* FilterTag.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				451840C02748538F00C390F0 /* UsageView.swift in Sources */,
 				CB8A119527483EC200442B6A /* Persistence.swift in Sources */,
 				CB8A118E27483EC100442B6A /* ContentView.swift in Sources */,
+				451840C92748E88C00C390F0 /* FilterTag.swift in Sources */,
 				451840B927484FC600C390F0 /* HomeView.swift in Sources */,
 				CB8A119827483EC200442B6A /* Eco_Guide.xcdatamodeld in Sources */,
 				451840C727485FA900C390F0 /* Card.swift in Sources */,

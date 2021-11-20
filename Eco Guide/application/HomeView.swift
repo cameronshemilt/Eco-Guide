@@ -10,12 +10,12 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 30) {
+            VStack(spacing: 15) {
                 // Title
                 CarbonYearlyTitleView(value: -7)
                     .padding(.top, 45)
-                    .padding(.bottom, 15)
-                
+                    .padding(.bottom, 30)
+
                 // Goal card
                 Card {
                     HStack {
@@ -48,8 +48,7 @@ struct HomeView: View {
                 .padding()
                 
                 // chart section
-                
-                Spacer()
+                #warning("todo: chart section")
             }
             .padding(.horizontal)
         }
