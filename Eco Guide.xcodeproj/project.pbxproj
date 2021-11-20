@@ -28,6 +28,7 @@
 		CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081E2748F561000510D0 /* TipDetailView.swift */; };
 		CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */; };
 		CBF4082327490729000510D0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4082227490729000510D0 /* OnboardingView.swift */; };
+		CBF408252749156D000510D0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408242749156D000510D0 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		CBF4081E2748F561000510D0 /* TipDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetailView.swift; sourceTree = "<group>"; };
 		CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		CBF4082227490729000510D0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CBF408242749156D000510D0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				CB8A119427483EC200442B6A /* Persistence.swift */,
 				CBF4081A2748E815000510D0 /* Tip.swift */,
 				CBF4081C2748E860000510D0 /* Categories.swift */,
+				CBF408242749156D000510D0 /* UserData.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */,
 				451840B727484DAD00C390F0 /* Extensions.swift in Sources */,
 				CBF4081D2748E860000510D0 /* Categories.swift in Sources */,
+				CBF408252749156D000510D0 /* UserData.swift in Sources */,
 				451840BE2748538300C390F0 /* SavingsView.swift in Sources */,
 				451840C02748538F00C390F0 /* UsageView.swift in Sources */,
 				CB8A119527483EC200442B6A /* Persistence.swift in Sources */,
