@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+struct Defaults {
+    static let household = "peopleInHousehold"
+    static let trash = "trashBasgPerWeek"
+    static let driving = "kilometersPerWeek"
+    static let electicCar = "ownsElectricCar"
+    static let diet = "diet"
+}
+
 extension Color {
     static var backgroundColor: Color {
         Color("backgroundColor")

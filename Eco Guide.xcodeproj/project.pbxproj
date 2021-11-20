@@ -27,6 +27,7 @@
 		CBF4081D2748E860000510D0 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081C2748E860000510D0 /* Categories.swift */; };
 		CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4081E2748F561000510D0 /* TipDetailView.swift */; };
 		CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */; };
+		CBF4082327490729000510D0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4082227490729000510D0 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		CBF4081C2748E860000510D0 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CBF4081E2748F561000510D0 /* TipDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDetailView.swift; sourceTree = "<group>"; };
 		CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		CBF4082227490729000510D0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				451840BD2748538300C390F0 /* SavingsView.swift */,
 				CBF4081E2748F561000510D0 /* TipDetailView.swift */,
 				451840BF2748538F00C390F0 /* UsageView.swift */,
+				CBF4082227490729000510D0 /* OnboardingView.swift */,
 			);
 			path = application;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				CBF4081B2748E815000510D0 /* Tip.swift in Sources */,
 				CBF408192748E662000510D0 /* UnitText.swift in Sources */,
 				451840CE274903D600C390F0 /* QuickTips.swift in Sources */,
+				CBF4082327490729000510D0 /* OnboardingView.swift in Sources */,
 				CB8A118C27483EC100442B6A /* Eco_GuideApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
