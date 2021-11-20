@@ -18,7 +18,7 @@ public struct PrimaryButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(size: 20))
             .foregroundColor(scheme == .dark ? color : foregroundColor)
-            .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 10, maxHeight: 10, alignment: .center)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             .padding(18)
             .background(color.opacity(scheme == .dark ? 0.15 : 1).opacity(configuration.isPressed ? 0.8 : 1))
             .cornerRadius(10)

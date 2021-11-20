@@ -8,7 +8,7 @@
 import SFSafeSymbols
 
 enum Categories: String, CaseIterable {
-    case living, transport, nutrition, wasteReduction, housing, other
+    case transport, nutrition, wasteReduction, housing, living, other
     
     init(_ string: String) {
         self = Categories(rawValue: string) ?? .other

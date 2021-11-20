@@ -11,7 +11,6 @@ struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage(Defaults.diet) private var diet: Diet = .vegan
     @AppStorage(Defaults.driving) private var driving: CarDistance = .tenToThirty
-    @AppStorage(Defaults.carType) private var car: CarType = .gas
     @AppStorage(Defaults.household) private var household: Household = .one
     @AppStorage(Defaults.trash) private var trash: Trash = .one
     @State private var activeView: Int = 0
@@ -45,10 +44,8 @@ struct OnboardingView: View {
             case 2:
                 carScreen
             case 3:
-                carScreen2
-            case 4:
                 energyScreen
-            case 5:
+            case 4:
                 trashScreen
             default:
                 summaryScreen
@@ -87,16 +84,10 @@ struct OnboardingView: View {
             Text("How do you eat ?")
                 .font(.title)
             Spacer()
-            Button("Vegan", action: { diet = .vegan; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("Vegetarian", action: { diet = .vegetarian; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("Pescetarian", action: { diet = .pescetarian; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("Some meat now and then", action: { diet = .littleMeat; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("Daily meat consumption", action: { diet = .dailyMeat; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            ForEach(Diet.allCases, id: \.self) { type in
+                Button(type.onboardingLabel, action: { diet = type; activeView += 1 })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            }
         }
         .padding(.vertical, 30)
     }
@@ -106,27 +97,10 @@ struct OnboardingView: View {
             Text("How much do you drive in one week ?")
                 .font(.title)
             Spacer()
-            Button("under 10 km", action: { driving = .underTen; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("10-30 km", action: { driving = .tenToThirty; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("30-100 km", action: { driving = .thirtyToHundred; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("over 100 km", action: { driving = .overHundred; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-        }
-        .padding(.vertical, 30)
-    }
-    
-    var carScreen2: some View {
-        VStack(spacing: 17) {
-            Text("Do you own an electric car ?")
-                .font(.title)
-            Spacer()
-            Button("Yes", action: { car = .electric; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("No", action: { car = .gas; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            ForEach(CarDistance.allCases, id: \.self) { type in
+                Button(type.onboardingLabel, action: { driving = type; activeView += 1 })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            }
         }
         .padding(.vertical, 30)
     }
@@ -136,16 +110,10 @@ struct OnboardingView: View {
             Text("How many people live with you ?")
                 .font(.title)
             Spacer()
-            Button("just me", action: { household = .one; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("one other", action: { household = .two; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("two more", action: { household = .three; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("three more", action: { household = .four; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("four or more", action: { household = .fiveOrMore; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            ForEach(Household.allCases, id: \.self) { type in
+                Button(type.onboardingLabel, action: { household = type; activeView += 1 })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            }
         }
         .padding(.vertical, 30)
     }
@@ -155,16 +123,10 @@ struct OnboardingView: View {
             Text("How many bags of trash do you produce in a week ?")
                 .font(.title)
             Spacer()
-            Button("less than one", action: { trash = .lessThanOne; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("about one", action: { trash = .one; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("two", action: { trash = .two; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("three", action: { trash = .three; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
-            Button("four or more", action: { trash = .fourOrMore; activeView += 1 })
-                .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            ForEach(Trash.allCases, id: \.self) { type in
+                Button(type.onboardingLabel, action: { trash = type; activeView += 1 })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+            }
         }
         .padding(.vertical, 30)
     }
