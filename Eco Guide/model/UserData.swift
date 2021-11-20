@@ -6,6 +6,7 @@ struct Defaults {
     static let trash = "trashBasgPerWeek"
     static let driving = "kilometersPerWeek"
     static let diet = "diet"
+    static let goalEmission = "goalEmission"
 }
 
 enum Diet: String, CaseIterable {
@@ -157,10 +158,14 @@ class EcoCalculator: ObservableObject {
         }
     }
     
-    var sumEmission: Double {
-        return 420
+    var netEmission: Double {
+        return 4200
     }
-    
+
+    var sumEmission: Double {
+        return 1800
+    }
+
     // MARK: Calc Emissions with UserDefaults
     var carEmission: Double {
         return 42
