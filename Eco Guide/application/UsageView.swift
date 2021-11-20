@@ -16,6 +16,9 @@ struct UsageView: View {
     @AppStorage(Defaults.driving) private var driving: CarDistance = .tenToThirty
     @AppStorage(Defaults.household) private var household: Household = .one
     @AppStorage(Defaults.trash) private var trash: Trash = .one
+    @State private var selectedCalculator: EmissionCalcItem? = nil
+    @State private var calcInput: String = ""
+    @State private var calcResult: String = "-"
     
     var body: some View {
         ScrollView {
@@ -34,38 +37,71 @@ struct UsageView: View {
                     Text("Emission calculator").font(.title3.bold())
                     Spacer(minLength: 0)
                 }
+                if let selectedCalculator = selectedCalculator {
+                    calculator(item: selectedCalculator)
+                }
                 emissionCalc
             }
             .padding(.horizontal)
+            .padding(.bottom, 40)
         }
     }
     
-    private struct EmissionCalcItem {
-        let symbol: SFSymbol
-        let name: String
-    }
-    private let emissionCalcItems: [EmissionCalcItem] = [
-        .init(symbol: .carFill, name: "Car Trip"),
-        .init(symbol: .airplaneDeparture, name: "Flight"),
-        .init(symbol: .forkKnife, name: "Meat"),
-        .init(symbol: .trashFill, name: "Plastic"),
-        .init(symbol: .newspaperFill, name: "Paper"),
-        .init(symbol: .bagFill, name: "Clothes")
-    ]
     private var emissionCalc: some View {
         LazyVGrid(columns: [GridItem.init(.adaptive(minimum: 100, maximum: 300))]) {
-            ForEach(emissionCalcItems, id: \.name) { (item: EmissionCalcItem) in
-                Card {
-                    VStack(spacing: 10) {
-                        Image(systemSymbol: item.symbol)
-                            .font(.title.bold())
-                            .foregroundColor(.red)
-                        Text(item.name)
-                            .fontWeight(.semibold)
+            ForEach(EmissionCalcItem.items, id: \.name) { (item: EmissionCalcItem) in
+                Button(action: {
+                    calcInput = ""
+                    calcResult = "-"
+                    if selectedCalculator == nil || selectedCalculator != item {
+                        selectedCalculator = item
+                    } else {
+                        selectedCalculator = nil
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }) {
+                    Card {
+                        VStack(spacing: 10) {
+                            Image(systemSymbol: item.symbol)
+                                .font(.title.bold())
+                                .foregroundColor(selectedCalculator == item ? .red : Color(uiColor: .systemGray3))
+                            Text(item.name)
+                                .fontWeight(.semibold)
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    }
                 }
+                .buttonStyle(.plain)
             }
+        }
+    }
+    
+    private func calculator(item: EmissionCalcItem) -> some View {
+        VStack {
+            Text("Emissions would be about")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.top, 10)
+            
+            UnitText(calcResult, unit: "KG CO2")
+                .foregroundColor(.red)
+            
+            HStack {
+                TextField(item.placeholder, text: $calcInput)
+                    .submitLabel(.go)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        if let num = Double(calcInput) {
+                            calcResult = item.callback(num).formattedUnitText
+                        } else {
+                            calcResult = "?"
+                        }
+                    }
+                Text(item.unit)
+                    .font(.system(.title2, design: .rounded))
+                    .bold()
+            }
+            .font(.title2)
         }
     }
     

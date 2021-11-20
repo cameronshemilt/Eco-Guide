@@ -30,6 +30,7 @@
 		CBF408212748F68F000510D0 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */; };
 		CBF4082327490729000510D0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4082227490729000510D0 /* OnboardingView.swift */; };
 		CBF408252749156D000510D0 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF408242749156D000510D0 /* UserData.swift */; };
+		CBF4082927496CBC000510D0 /* EmissionCalcItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4082827496CBC000510D0 /* EmissionCalcItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		CBF408202748F68F000510D0 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		CBF4082227490729000510D0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CBF408242749156D000510D0 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		CBF4082827496CBC000510D0 /* EmissionCalcItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmissionCalcItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				CBF4081A2748E815000510D0 /* Tip.swift */,
 				CBF4081C2748E860000510D0 /* Categories.swift */,
 				CBF408242749156D000510D0 /* UserData.swift */,
+				CBF4082827496CBC000510D0 /* EmissionCalcItem.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				CBF4081F2748F561000510D0 /* TipDetailView.swift in Sources */,
 				451840C727485FA900C390F0 /* Card.swift in Sources */,
 				451840C5274855AD00C390F0 /* CarbonYearlyTitleView.swift in Sources */,
+				CBF4082927496CBC000510D0 /* EmissionCalcItem.swift in Sources */,
 				CBF408172748E647000510D0 /* ProgressRing.swift in Sources */,
 				CBF4081B2748E815000510D0 /* Tip.swift in Sources */,
 				CBF408192748E662000510D0 /* UnitText.swift in Sources */,
@@ -387,7 +391,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cameronshemilt.Eco-Guide";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cameronshemilt.EcoGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -417,7 +421,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cameronshemilt.Eco-Guide";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cameronshemilt.EcoGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

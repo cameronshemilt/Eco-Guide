@@ -30,6 +30,7 @@ struct ContentView: View {
             
             TabViewElement {
                 UsageView()
+                    .accentColor(.red)
             }
             .background(Color.redBackgroundColor)
             .tabItem {
