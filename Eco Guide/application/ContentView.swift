@@ -15,6 +15,7 @@ struct ContentView: View {
             TabViewElement {
                 HomeView()
             }
+            .background(Color.backgroundColor)
             .tabItem {
                 Label("Home", systemSymbol: .house)
             }
@@ -22,6 +23,7 @@ struct ContentView: View {
             TabViewElement {
                 SavingsView()
             }
+            .background(Color.backgroundColor)
             .tabItem {
                 Label("Savings", systemSymbol: .leafFill)
             }
@@ -29,6 +31,7 @@ struct ContentView: View {
             TabViewElement {
                 UsageView()
             }
+            .background(Color.redBackgroundColor)
             .tabItem {
                 Label("Usage", systemSymbol: .carFill)
             }
@@ -48,7 +51,6 @@ fileprivate struct TabViewElement<Content: View>: View {
             content
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(Color.backgroundColor)
     }
 }
 

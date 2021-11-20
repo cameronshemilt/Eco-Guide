@@ -38,10 +38,16 @@ struct SavingsView: View {
     private var tagSelector: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                FilterTag(text: "All", active: selectedCategory == nil, color: .green)
+                Button("All", action: {
+                    selectedCategory = nil
+                })
+                    .buttonStyle(TagButtonStyle(active: selectedCategory == nil, color: .green))
                 
                 ForEach(Categories.allCases, id: \.self) { category in
-                    FilterTag(text: category.name, active: selectedCategory == category, color: .green)
+                    Button(category.name, action: {
+                        selectedCategory = category
+                    })
+                        .buttonStyle(TagButtonStyle(active: selectedCategory == category, color: .green))
                 }
             }
         }
