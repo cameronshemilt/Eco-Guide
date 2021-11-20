@@ -38,7 +38,7 @@ enum Categories: String, CaseIterable, Identifiable {
     var systemSymbol: SFSymbol {
         switch self {
         case .living:
-            return .houseFill
+            return .figureWalk
         case .transport:
             return .carFill
         case .nutrition:
