@@ -18,7 +18,7 @@ struct Forest: View, Equatable {
                     ForEach(1...count, id: \.self) { i in
                         Image("tree\(i%6)")
                             .scaleEffect(.random(in: 0.7...1.2), anchor: .bottom)
-                            .offset(x: ((CGFloat(i)/CGFloat(count)) - 0.5) * geo.size.width * 0.9 * .random(in: 0.9...1.1))
+                            .offset(x: ((CGFloat(i)/CGFloat(count)) - 0.5) * geo.size.width * 0.95 * .random(in: 0.95...1.05))
                     }
                 }
                 .padding(.bottom, 78)

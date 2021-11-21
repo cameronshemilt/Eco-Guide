@@ -14,8 +14,7 @@ struct HomeView: View {
     @State private var showCategoryFacts: Categories? = nil
     
     var numberOfTrees: Int {
-        #warning("todo")
-        return 15
+        return Int(floor(ecoCalculator.sumSavings / 21.7))
     }
     
     var body: some View {
