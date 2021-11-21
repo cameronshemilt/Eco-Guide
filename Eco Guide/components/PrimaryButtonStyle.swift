@@ -16,7 +16,6 @@ public struct PrimaryButtonStyle: ButtonStyle {
     
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 20))
             .foregroundColor(scheme == .dark ? color : foregroundColor)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             .padding(18)

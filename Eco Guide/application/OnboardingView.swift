@@ -80,6 +80,7 @@ struct OnboardingView: View {
             Spacer()
             Button("Start", action: { activeView += 1 })
                 .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                .font(.system(size: 20))
         }
         .padding(.vertical, 30)
     }
@@ -92,6 +93,7 @@ struct OnboardingView: View {
             ForEach(Diet.allCases, id: \.self) { type in
                 Button(type.onboardingLabel, action: { diet = type; activeView += 1 })
                     .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
             }
         }
         .padding(.vertical, 30)
@@ -105,6 +107,7 @@ struct OnboardingView: View {
             ForEach(CarDistance.allCases, id: \.self) { type in
                 Button(type.onboardingLabel, action: { driving = type; activeView += 1 })
                     .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
             }
         }
         .padding(.vertical, 30)
@@ -118,6 +121,7 @@ struct OnboardingView: View {
             ForEach(Household.allCases, id: \.self) { type in
                 Button(type.onboardingLabel, action: { household = type; activeView += 1 })
                     .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
             }
         }
         .padding(.vertical, 30)
@@ -131,6 +135,7 @@ struct OnboardingView: View {
             ForEach(Trash.allCases, id: \.self) { type in
                 Button(type.onboardingLabel, action: { trash = type; activeView += 1 })
                     .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
             }
         }
         .padding(.vertical, 30)
@@ -155,16 +160,24 @@ struct OnboardingView: View {
             LazyVGrid(columns: Array(repeating: .init(), count: 2)) {
                 Button("-10%", action: {
                     setGoal(0.9)
-                }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
                 Button("-15%", action: {
                     setGoal(0.85)
-                }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
                 Button("-20%", action: {
                     setGoal(0.8)
-                }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
                 Button("-25%", action: {
                     setGoal(0.75)
-                }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                })
+                    .buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
+                    .font(.system(size: 20))
             }
         }
         .padding(.vertical, 30)

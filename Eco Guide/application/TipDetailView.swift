@@ -83,6 +83,7 @@ struct TipDetailView: View {
                 dismiss()
             })
                 .buttonStyle(PrimaryButtonStyle())
+                .font(.system(size: 20))
         }
         .padding(.horizontal)
         .toolbar {
