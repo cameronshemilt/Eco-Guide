@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct TipDetailView: View {
-    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) var moc
     let tip: Tip
     
+    @ObservedObject private var ecoCalculator = EcoCalculator()
+    @AppStorage(Defaults.goalEmission) private var goalEmission: Double = 10000
+
     var tipIsDone: Bool {
-        return data.contains(where: { $0.id == tip.id })
+        return tipData.contains(where: { $0.id == tip.id })
+    }
+    
+    var closerToGoal: Int {
+        let cur = (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) - goalEmission) / ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
+        let new = ((ecoCalculator.netEmission(usageData: usageData, tipData: tipData) - tip.callback()) - goalEmission) / (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) - tip.callback())
+        return Int(ceil(abs(cur - new) * 100))
     }
     
     var body: some View {
@@ -40,7 +50,7 @@ struct TipDetailView: View {
             
             HStack {
                 Text("This will get you")
-                UnitText("2", unit: "%")
+                UnitText("\(closerToGoal)", unit: "%")
                     .foregroundColor(.green)
                 Text("closer")
             }
