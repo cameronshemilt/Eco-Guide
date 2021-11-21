@@ -180,6 +180,8 @@ enum Trash: String, CaseIterable {
 }
 
 class EcoCalculator: ObservableObject {
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
     @AppStorage(Defaults.household) private var household: Household = .one {
         willSet {
             // Call objectWillChange manually since @AppStorage is not published
@@ -203,13 +205,22 @@ class EcoCalculator: ObservableObject {
     }
     
     var netEmission: Double {
-#warning("TODO")
-        return 4200
+        return sumEmission + sumSavings
     }
     
     var sumEmission: Double {
-#warning("TODO")
-        return 1800
+        var result = carEmission + electricityEmission + foodEmission + wasteEmission + waterEmission + heatingEmission
+        result += usageData.reduce(0, { $0 + $1.co2 })
+        return result
+    }
+    
+    var sumSavings: Double {
+        return Tip.data.reduce(0, { (sum, new) in
+            if tipData.contains(where: { $0.id == new.id }) {
+                return sum + new.callback()
+            }
+            return sum
+        })
     }
     
     // MARK: Calc Emissions with UserDefaults
