@@ -228,32 +228,10 @@ class EcoCalculator: ObservableObject {
         return EcoCalculator.carEmission(km: Double(driving.number), isElectric: false)  * 365
     }
     var electricityEmission: Double {
-        switch household {
-        case .one:
-            return 0.35 * 1600
-        case .two:
-            return 0.35 * 2300
-        case .three:
-            return 0.35 * 2800
-        case .four:
-            return 0.35 * 3200
-        case .fiveOrMore:
-            return 0.35 * 3500
-        }
+        return EcoCalculator.heating(people: household.numOfPeople, renewable: false)
     }
     var foodEmission: Double {
-        switch diet {
-        case .vegan:
-            return 6.4 * 365
-        case .vegetarian:
-            return 8.4 * 365
-        case .pescetarian:
-            return 8.6 * 365
-        case .littleMeat:
-            return 11 * 365
-        case .dailyMeat:
-            return 15.8 * 365
-        }
+        return EcoCalculator.food(diet: diet, days: 365)
     }
     var wasteEmission: Double {
         return EcoCalculator.trash(kg: 457) * trash.num
@@ -287,5 +265,37 @@ class EcoCalculator: ObservableObject {
     }
     static func meat(kg: Double) -> Double {
         return 99 * kg
+    }
+    static func heating(people: Int, renewable: Bool) -> Double {
+        let factor = renewable ? 0.25 : 0.35
+        switch people {
+        case 1:
+            return factor * 1600
+        case 2:
+            return factor * 2300
+        case 3:
+            return factor * 2800
+        case 4:
+            return factor * 3200
+        default:
+            return factor * 3500
+        }
+    }
+    static func food(diet: Diet, days: Int) -> Double {
+        switch diet {
+        case .vegan:
+            return 6.4 * Double(days)
+        case .vegetarian:
+            return 8.4 * Double(days)
+        case .pescetarian:
+            return 8.6 * Double(days)
+        case .littleMeat:
+            return 11 * Double(days)
+        case .dailyMeat:
+            return 15.8 * Double(days)
+        }
+    }
+    static func tapWater(litres: Double) -> Double {
+        return 0.00035 * litres
     }
 }
