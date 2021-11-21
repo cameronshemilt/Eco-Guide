@@ -50,6 +50,8 @@ struct SavingsView: View {
                 TipDetailView(tip: tip)
                     .background(Color.backgroundColor)
             }
+            .statusBar(hidden: true)
+            .preferredColorScheme(.light)
         }
     }
         

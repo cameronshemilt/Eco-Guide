@@ -73,13 +73,19 @@ struct HomeView: View {
         }
         .fullScreenCover(isPresented: $didFinishOnboarding.not, content: {
             OnboardingView()
+                .statusBar(hidden: true)
+                .preferredColorScheme(.light)
         })
         .fullScreenCover(item: $showCategoryFacts) { cate in
-            if let fact = FunFact.data.first(where: { $0.category == cate }) {
-                QuickTips(facts: [fact] + Array(FunFact.data.filter({$0.id != fact.id}).shuffled().suffix(3)))
-            } else {
-                QuickTips(facts: Array(FunFact.data.shuffled().suffix(4)))
+            Group {
+                if let fact = FunFact.data.first(where: { $0.category == cate }) {
+                    QuickTips(facts: [fact] + Array(FunFact.data.filter({$0.id != fact.id}).shuffled().suffix(3)))
+                } else {
+                    QuickTips(facts: Array(FunFact.data.shuffled().suffix(4)))
+                }
             }
+            .statusBar(hidden: true)
+            .preferredColorScheme(.light)
         }
     }
     
