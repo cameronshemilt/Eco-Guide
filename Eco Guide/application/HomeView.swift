@@ -53,7 +53,7 @@ struct HomeView: View {
                 Spacer().frame(maxHeight: 20)
                 
                 VStack(spacing: 5) {
-                    Text("The amount of CO2 you are\n saving is equal to")
+                    Text("The amount of CO2 you are\n saving is equivalent to planting")
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                     VStack(spacing: 0) {

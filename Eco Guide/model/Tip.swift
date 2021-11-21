@@ -66,7 +66,7 @@ class TipManager: ObservableObject {
                 category: .nutrition,
                 callback: { return -1*(365*15.8 - 365*6.4) }),
             Tip(id: 7, title: "Buy only what you eat",
-                description: "by only buying what you will consume, you don't throw away food that used resources in production.",
+                description: "By only buying what you will consume, you don't throw away food that used resources in production.",
                 category: .wasteReduction,
                 callback: { return -183 }),
             Tip(id: 8, title: "Buy responsible manufactured clothes",
