@@ -106,7 +106,7 @@ struct HomeView: View {
                         .padding(.trailing)
                         Spacer(minLength: 0)
                         
-                        ProgressRing(1 - ((ecoCalculator.netEmission - goalEmission) / ecoCalculator.netEmission), color: .green)
+                        ProgressRing(calculateProgress(), color: .green)
                             .diameter(80)
                             .padding(5)
                     }
@@ -134,6 +134,16 @@ struct HomeView: View {
         }
     }
     
+    func calculateProgress() -> CGFloat {
+        let val = (ecoCalculator.netEmission - goalEmission) / ecoCalculator.netEmission
+        if val.isNaN {
+            return 1
+        }
+        if !(0 <= val && val <= 1) {
+            return 0
+        }
+        return 1 - val
+    }
     
     func adaptGoal(_ val: Double) {
         withAnimation {
