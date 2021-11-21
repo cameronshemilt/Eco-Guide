@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct TipDetailView: View {
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) var moc
     let tip: Tip
+    
+    var tipIsDone: Bool {
+        return data.contains(where: { $0.id == tip.id })
+    }
     
     var body: some View {
         VStack {
@@ -41,10 +47,24 @@ struct TipDetailView: View {
             Text("to your total goal.")
                 .padding(.top, -16)
             Spacer()
-            Button("Accept", action: {
-                let entry = AcceptedTipEntry(context: moc)
-                entry.id = Int64(tip.id)
-                entry.timestamp = Date.now
+            Button(tipIsDone ? "Undo" : "Accept", action: {
+                if tipIsDone {
+                    let fetchRequest = AcceptedTipEntry.fetchRequest()
+                    
+                    if let result = try? moc.fetch(fetchRequest) {
+                        if let obj = result.first(where: { ele in
+                            return ele.id == tip.id
+                        }) {
+                            moc.delete(obj)
+                        }
+                    } else {
+                        print("Object not found!")
+                    }
+                } else {
+                    let entry = AcceptedTipEntry(context: moc)
+                    entry.id = Int64(tip.id)
+                    entry.timestamp = Date.now
+                }
                 do {
                     try moc.save()
                 } catch {
