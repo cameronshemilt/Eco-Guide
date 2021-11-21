@@ -50,7 +50,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(.vertical)
-                Spacer().frame(maxHeight: 40)
+                Spacer().frame(maxHeight: 20)
                 
                 VStack(spacing: 5) {
                     Text("The amount of CO2 you are\n saving is equal to")
