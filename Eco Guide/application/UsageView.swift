@@ -45,6 +45,7 @@ struct UsageView: View {
                 }
                 emissionCalc
                 usageHistory
+                    .padding(.top, 10)
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
@@ -226,12 +227,23 @@ struct UsageView: View {
     private var usageHistory: some View {
         ForEach(usageData) { entry in
             HStack {
-                Image(systemSymbol: .airplaneDeparture)
-                Text("Flight")
-                Text("7h")
+                Image(systemSymbol: EmissionCalcItem.items.first(where: {$0.name == entry.type})?.symbol ?? .questionmark)
+                    .frame(width: 35)
+                Text(entry.type ?? "Unknown")
                 Spacer()
-                Button(action: {}) { Image(systemSymbol: .trashFill) }.foregroundColor(.red)
+                Text(entry.co2.formattedUnitText).font(.system(.body, design: .rounded)).fontWeight(.medium) + Text(" KG CO2").font(.footnote)
+                Button(action: {
+                    moc.delete(entry)
+                    do {
+                        try moc.save()
+                    } catch {
+                        print("could not save deletion")
+                    }
+                }) {
+                    Image(systemSymbol: .trashFill)
+                }.foregroundColor(.red)
             }
+            .padding(.top, 5)
         }
     }
 }
