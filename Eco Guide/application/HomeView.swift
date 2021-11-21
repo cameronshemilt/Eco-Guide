@@ -99,7 +99,7 @@ struct HomeView: View {
                             Text("You reached your goal!")
                                 .font(.title3)
                                 .bold()
-                            Text("Now let's see if you can further minimize your carbon footprint.")
+                            Text("Now let's see if you can further minimise your carbon footprint.")
                                 .foregroundColor(.secondary)
                         }
                         .padding(.trailing)
@@ -112,7 +112,7 @@ struct HomeView: View {
                             Text("Your Goal")
                                 .font(.title3)
                                 .bold()
-                            Text("You have set yourself a goal of minimizing your carbon footprint.")
+                            Text("You have set yourself a goal of minimising your carbon footprint.")
                                 .foregroundColor(.secondary)
                         }
                         .padding(.trailing)

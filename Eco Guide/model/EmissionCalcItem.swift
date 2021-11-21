@@ -36,7 +36,7 @@ extension EmissionCalcItem {
         .init(symbol: .trashFill, name: "Trash", unit: "Bags", placeholder: "Amount", callback: { amount in
             return EcoCalculator.trash(kg: 32 * amount)
         }),
-        .init(symbol: .newspaperFill, name: "Paper", unit: "sheets", placeholder: "Aount", callback: { amount in
+        .init(symbol: .newspaperFill, name: "Paper", unit: "sheets", placeholder: "Amount", callback: { amount in
             return EcoCalculator.paper(kg: 0.005 * amount)
         }),
     ]

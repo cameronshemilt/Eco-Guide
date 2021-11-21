@@ -35,7 +35,7 @@ struct TipDetailView: View {
                 .padding(.bottom, 20)
             
             Card {
-                Text("Based on ous calculations,\nyou could save up to")
+                Text("Based on our calculations,\nyou could save up to")
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
                     .foregroundColor(.secondary)

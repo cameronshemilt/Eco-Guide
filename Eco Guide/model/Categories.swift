@@ -12,7 +12,7 @@ enum Categories: String, CaseIterable, Identifiable {
         return rawValue
     }
     
-    case transport, nutrition, wasteReduction, housing, living, other
+    case transport, housing, nutrition, wasteReduction, living, other
     
     init(_ string: String) {
         self = Categories(rawValue: string) ?? .other

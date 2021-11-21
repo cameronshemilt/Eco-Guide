@@ -4,7 +4,7 @@ import CoreData
 
 struct Defaults {
     static let household = "peopleInHousehold"
-    static let trash = "trashBasgPerWeek"
+    static let trash = "trashBagsPerWeek"
     static let driving = "kilometersPerWeek"
     static let diet = "diet"
     static let goalEmission = "goalEmission"
@@ -12,7 +12,7 @@ struct Defaults {
 }
 
 enum Diet: String, CaseIterable {
-    case vegan, vegetarian, pescetarian, littleMeat, dailyMeat
+    case vegan, vegetarian, pescatarian, littleMeat, dailyMeat
     
     var usageLabel: String {
         switch self {
@@ -20,8 +20,8 @@ enum Diet: String, CaseIterable {
             return "Vegan"
         case .vegetarian:
             return "Vegetarian"
-        case .pescetarian:
-            return "Pescetarian"
+        case .pescatarian:
+            return "Pescatarian"
         case .littleMeat:
             return "Some meat"
         case .dailyMeat:
@@ -35,8 +35,8 @@ enum Diet: String, CaseIterable {
             return "Vegan"
         case .vegetarian:
             return "Vegetarian"
-        case .pescetarian:
-            return "Pescetarian"
+        case .pescatarian:
+            return "Pescatarian"
         case .littleMeat:
             return "Some meat now and then"
         case .dailyMeat:
@@ -231,7 +231,18 @@ class EcoCalculator: ObservableObject {
         return EcoCalculator.heating(people: household.numOfPeople, renewable: false)
     }
     var foodEmission: Double {
-        return EcoCalculator.food(diet: diet, days: 365)
+        switch diet {
+        case .vegan:
+            return 6.4 * 365
+        case .vegetarian:
+            return 8.4 * 365
+        case .pescatarian:
+            return 8.6 * 365
+        case .littleMeat:
+            return 11 * 365
+        case .dailyMeat:
+            return 15.8 * 365
+        }
     }
     var wasteEmission: Double {
         return EcoCalculator.trash(kg: 457) * trash.num
@@ -287,7 +298,7 @@ class EcoCalculator: ObservableObject {
             return 6.4 * Double(days)
         case .vegetarian:
             return 8.4 * Double(days)
-        case .pescetarian:
+        case .pescatarian:
             return 8.6 * Double(days)
         case .littleMeat:
             return 11 * Double(days)
