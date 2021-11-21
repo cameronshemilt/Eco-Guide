@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SFSafeSymbols
+import Introspect
 
 struct UsageView: View {
     @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
@@ -43,6 +44,7 @@ struct UsageView: View {
                     calculator(item: selectedCalculator)
                 }
                 emissionCalc
+                usageHistory
             }
             .padding(.horizontal)
             .padding(.bottom, 40)
@@ -92,6 +94,7 @@ struct UsageView: View {
                     let entry = UsageEntry(context: moc)
                     entry.timestamp = Date.now
                     entry.co2 = item.callback(num)
+                    entry.type = item.name
                     do {
                         try moc.save()
                     } catch {
@@ -216,6 +219,18 @@ struct UsageView: View {
                         .foregroundColor(selectedCategory == category ? .white : .black)
                         .buttonStyle(TagButtonStyle(active: selectedCategory == category, color: .red))
                 }
+            }
+        }
+    }
+    
+    private var usageHistory: some View {
+        ForEach(usageData) { entry in
+            HStack {
+                Image(systemSymbol: .airplaneDeparture)
+                Text("Flight")
+                Text("7h")
+                Spacer()
+                Button(action: {}) { Image(systemSymbol: .trashFill) }.foregroundColor(.red)
             }
         }
     }
