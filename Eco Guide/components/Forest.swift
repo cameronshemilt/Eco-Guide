@@ -13,15 +13,16 @@ struct Forest: View, Equatable {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
-
-                Group {
-                    ForEach(1...count, id: \.self) { i in
-                        Image("tree\(i%6)")
-                            .scaleEffect(.random(in: 0.7...1.2), anchor: .bottom)
-                            .offset(x: ((CGFloat(i)/CGFloat(count)) - 0.5) * geo.size.width * 0.95 * .random(in: 0.95...1.05))
+                if 1 <= count {
+                    Group {
+                        ForEach(1...count, id: \.self) { i in
+                            Image("tree\(i%6)")
+                                .scaleEffect(.random(in: 0.7...1.2), anchor: .bottom)
+                                .offset(x: ((CGFloat(i)/CGFloat(count)) - 0.5) * geo.size.width * 0.95 * .random(in: 0.95...1.05))
+                        }
                     }
+                    .padding(.bottom, 78)
                 }
-                .padding(.bottom, 78)
                 
                 Image("floor")
                     .resizable()
@@ -31,7 +32,7 @@ struct Forest: View, Equatable {
             .frame(width: nil, height: geo.size.height, alignment: .bottom)
         }
         .frame(height: 200)
-//        .border(.red)
+        //        .border(.red)
     }
     
     static func ==(lhs: Forest, rhs: Forest) -> Bool {
