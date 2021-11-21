@@ -275,7 +275,7 @@ class EcoCalculator: ObservableObject {
         return 90 * h
     }
     static func meat(kg: Double) -> Double {
-        return 99 * kg
+        return 60 * kg
     }
     static func heating(people: Int, renewable: Bool) -> Double {
         let factor = renewable ? 0.25 : 0.35
