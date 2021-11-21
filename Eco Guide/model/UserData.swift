@@ -251,8 +251,7 @@ class EcoCalculator: ObservableObject {
         return 0.00035 * 147 * 365 * Double(household.numOfPeople)
     }
     var heatingEmission: Double {
-#warning("TODO")
-        return 888
+        return 731
     }
     
     // MARK: Static Funcs

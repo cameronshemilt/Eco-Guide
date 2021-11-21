@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-#warning("hold gesture")
 
 struct QuickTips: View {
     @Environment(\.dismiss) private var dismiss
@@ -38,7 +37,6 @@ struct QuickTips: View {
             Spacer()
             
             Button(action: {
-                #warning("todo: export tip")
             }) {
                 Image(systemSymbol: .squareAndArrowUp)
                     .font(.largeTitle)
