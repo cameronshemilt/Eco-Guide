@@ -16,7 +16,7 @@ struct HomeView: View {
     @State private var showCategoryFacts: Categories? = nil
     
     var numberOfTrees: Int {
-        return Int(floor(ecoCalculator.sumSavings(tipData: tipData) / 21.7))
+        return Int(floor(abs(ecoCalculator.sumSavings(tipData: tipData) / 21.7)))
     }
     
     var body: some View {
@@ -49,7 +49,7 @@ struct HomeView: View {
                         }
                     }
                     .padding(.vertical)
-                    Spacer().frame(maxHeight: 50)
+                    Spacer().frame(maxHeight: 40)
                     
                     VStack(spacing: 5) {
                         Text("The amount of CO2 you are\n saving is equal to")
