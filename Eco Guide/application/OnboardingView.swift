@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     @Environment(\.dismiss) private var dismiss
     @AppStorage(Defaults.diet) private var diet: Diet = .vegan
     @AppStorage(Defaults.driving) private var driving: CarDistance = .tenToThirty
@@ -139,7 +141,7 @@ struct OnboardingView: View {
                 .font(.title)
             Spacer()
             Card {
-                CarbonYearlyTitleView(value: ecoCalculator.netEmission, title: "")
+                CarbonYearlyTitleView(value: ecoCalculator.netEmission(usageData: usageData, tipData: tipData), title: "")
                     .foregroundColor(.red)
             }
             Spacer()
@@ -151,19 +153,19 @@ struct OnboardingView: View {
 
             LazyVGrid(columns: Array(repeating: .init(), count: 2)) {
                 Button("-10%", action: {
-                    goalEmission = 0.9 * ecoCalculator.netEmission
+                    goalEmission = 0.9 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
                     dismiss()
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-15%", action: {
-                    goalEmission = 0.85 * ecoCalculator.netEmission
+                    goalEmission = 0.85 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
                     dismiss()
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-20%", action: {
-                    goalEmission = 0.8 * ecoCalculator.netEmission
+                    goalEmission = 0.8 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
                     dismiss()
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-25%", action: {
-                    goalEmission = 0.75 * ecoCalculator.netEmission
+                    goalEmission = 0.75 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
                     dismiss()
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
             }

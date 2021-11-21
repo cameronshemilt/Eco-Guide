@@ -9,6 +9,8 @@ import SwiftUI
 import SFSafeSymbols
 
 struct UsageView: View {
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     @Environment(\.managedObjectContext) var moc
     @ObservedObject private var ecoCalculator = EcoCalculator()
     @AppStorage(Defaults.diet) private var diet: Diet = .vegan
@@ -23,7 +25,7 @@ struct UsageView: View {
     var body: some View {
         ScrollView {
             Group {
-                CarbonYearlyTitleView(value: ecoCalculator.sumEmission, title: "You use")
+                CarbonYearlyTitleView(value: ecoCalculator.sumEmission(usageData: usageData), title: "You use")
                     .foregroundColor(.red)
                     .padding(.vertical, 25)
                 

@@ -9,28 +9,30 @@ import SwiftUI
 import SFSafeSymbols
 
 struct SavingsView: View {
-    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var data: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
     @State private var showBeginner = true
     
     @ObservedObject private var tipManager = TipManager()
+    @ObservedObject private var calculator = EcoCalculator()
 
     var openTips: [Tip] {
         tipManager.data.filter({ tip in
-            !data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
+            !tipData.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
     var acceptedTips: [Tip] {
         tipManager.data.filter({ tip in
-            data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
+            tipData.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
     
     var body: some View {
         ScrollView {
             Group {
-                CarbonYearlyTitleView(value: acceptedTips.reduce(0.0, { $0 + $1.callback() }), title: "Total Savings")
+                CarbonYearlyTitleView(value: calculator.sumSavings(tipData: tipData), title: "Total Savings")
                     .foregroundColor(.green)
                     .padding(.vertical, 25)
                 tagSelector

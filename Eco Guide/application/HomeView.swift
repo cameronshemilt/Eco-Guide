@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
+    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
+    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     @AppStorage(Defaults.goalEmission) private var goalEmission: Double = 10000
     @ObservedObject private var ecoCalculator = EcoCalculator()
 
     @State private var showCategoryFacts: Categories? = nil
     
     var numberOfTrees: Int {
-        return Int(floor(ecoCalculator.sumSavings / 21.7))
+        return Int(floor(ecoCalculator.sumSavings(tipData: tipData) / 21.7))
     }
     
     var body: some View {
@@ -28,8 +30,8 @@ struct HomeView: View {
 
                 VStack {
                     // Title
-                    CarbonYearlyTitleView(value: ecoCalculator.netEmission, title: "Total Footprint")
-                        .foregroundColor(ecoCalculator.netEmission <= goalEmission ? (ecoCalculator.netEmission <= 0 ? .green : .orange) : .red)
+                    CarbonYearlyTitleView(value: ecoCalculator.netEmission(usageData: usageData, tipData: tipData), title: "Total Footprint")
+                        .foregroundColor(ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= goalEmission ? (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= 0 ? .green : .orange) : .red)
                         .padding(.vertical, 25)
                     
                     goalCard
@@ -81,7 +83,7 @@ struct HomeView: View {
     var goalCard: some View {
         Card(innerPadding: 0, shadow: false) {
             Card {
-                if ecoCalculator.netEmission < goalEmission {
+                if ecoCalculator.netEmission(usageData: usageData, tipData: tipData) < goalEmission {
                     HStack {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("You reached your goal!")
@@ -135,7 +137,7 @@ struct HomeView: View {
     }
     
     func calculateProgress() -> CGFloat {
-        let val = (ecoCalculator.netEmission - goalEmission) / ecoCalculator.netEmission
+        let val = (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) - goalEmission) / ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
         if val.isNaN {
             return 1
         }
@@ -147,7 +149,7 @@ struct HomeView: View {
     
     func adaptGoal(_ val: Double) {
         withAnimation {
-            goalEmission = val * ecoCalculator.netEmission
+            goalEmission = val * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
             extendGoal = false
         }
     }

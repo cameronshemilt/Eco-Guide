@@ -1,5 +1,6 @@
 import Combine
 import SwiftUI
+import CoreData
 
 struct Defaults {
     static let household = "peopleInHousehold"
@@ -180,8 +181,6 @@ enum Trash: String, CaseIterable {
 }
 
 class EcoCalculator: ObservableObject {
-    @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
-    @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
     @AppStorage(Defaults.household) private var household: Household = .one {
         willSet {
             // Call objectWillChange manually since @AppStorage is not published
@@ -204,18 +203,18 @@ class EcoCalculator: ObservableObject {
         }
     }
     
-    var netEmission: Double {
-        return sumEmission + sumSavings
+    func netEmission(usageData: FetchedResults<UsageEntry>, tipData: FetchedResults<AcceptedTipEntry>) -> Double {
+        return sumEmission(usageData: usageData) + sumSavings(tipData: tipData)
     }
     
-    var sumEmission: Double {
+    func sumEmission(usageData: FetchedResults<UsageEntry>) -> Double {
         var result = carEmission + electricityEmission + foodEmission + wasteEmission + waterEmission + heatingEmission
         result += usageData.reduce(0, { $0 + $1.co2 })
         return result
     }
     
-    var sumSavings: Double {
-        return Tip.data.reduce(0, { (sum, new) in
+    func sumSavings(tipData: FetchedResults<AcceptedTipEntry>) -> Double {
+        return TipManager().data.reduce(0, { (sum, new) in
             if tipData.contains(where: { $0.id == new.id }) {
                 return sum + new.callback()
             }
