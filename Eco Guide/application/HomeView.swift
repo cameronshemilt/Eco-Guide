@@ -11,8 +11,9 @@ struct HomeView: View {
     @FetchRequest(entity: AcceptedTipEntry.entity(), sortDescriptors: []) private var tipData: FetchedResults<AcceptedTipEntry>
     @FetchRequest(entity: UsageEntry.entity(), sortDescriptors: []) private var usageData: FetchedResults<UsageEntry>
     @AppStorage(Defaults.goalEmission) private var goalEmission: Double = 10000
+    @AppStorage(Defaults.didFinishOnboarding) private var didFinishOnboarding: Bool = false
     @ObservedObject private var ecoCalculator = EcoCalculator()
-
+    
     @State private var showCategoryFacts: Categories? = nil
     
     var numberOfTrees: Int {
@@ -20,56 +21,59 @@ struct HomeView: View {
     }
     
     var body: some View {
-            ZStack {
-                // forest section
-                VStack {
-                    Spacer()
-                    EquatableView(content: Forest(count: numberOfTrees))
-                        .offset(x: 0, y: 50)
-                }
-
-                VStack {
-                    // Title
-                    CarbonYearlyTitleView(value: ecoCalculator.netEmission(usageData: usageData, tipData: tipData), title: "Total Footprint")
-                        .foregroundColor(ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= goalEmission ? (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= 0 ? .green : .orange) : .red)
-                        .padding(.vertical, 25)
-                    
-                    goalCard
-                    
-                    // Story Section
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 0) {
-                            ForEach(Categories.allCases, id: \.self) { category in
-                                StoryPreview(category: category, seen: false, size: 50)
-                                    .padding(5)
-                                    .onTapGesture {
-                                        showCategoryFacts = category
-                                    }
-                            }
+        ZStack {
+            // forest section
+            VStack {
+                Spacer()
+                EquatableView(content: Forest(count: numberOfTrees))
+                    .offset(x: 0, y: 50)
+            }
+            
+            VStack {
+                // Title
+                CarbonYearlyTitleView(value: ecoCalculator.netEmission(usageData: usageData, tipData: tipData), title: "Total Footprint")
+                    .foregroundColor(ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= goalEmission ? (ecoCalculator.netEmission(usageData: usageData, tipData: tipData) <= 0 ? .green : .orange) : .red)
+                    .padding(.vertical, 25)
+                
+                goalCard
+                
+                // Story Section
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 0) {
+                        ForEach(Categories.allCases, id: \.self) { category in
+                            StoryPreview(category: category, seen: false, size: 50)
+                                .padding(5)
+                                .onTapGesture {
+                                    showCategoryFacts = category
+                                }
                         }
                     }
-                    .padding(.vertical)
-                    Spacer().frame(maxHeight: 40)
-                    
-                    VStack(spacing: 5) {
-                        Text("The amount of CO2 you are\n saving is equal to")
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                        VStack(spacing: 0) {
-                            Text("\(numberOfTrees)")
-                                .bold()
-                                .font(.system(size: 45, weight: .bold, design: .rounded))
-                                .foregroundColor(.green)
-                            Text("TREES")
-                                .bold()
-                                .font(.system(.body, design: .rounded))
-                                .foregroundColor(.green)
-                        }
-                    }
-                    Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.vertical)
+                Spacer().frame(maxHeight: 40)
+                
+                VStack(spacing: 5) {
+                    Text("The amount of CO2 you are\n saving is equal to")
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    VStack(spacing: 0) {
+                        Text("\(numberOfTrees)")
+                            .bold()
+                            .font(.system(size: 45, weight: .bold, design: .rounded))
+                            .foregroundColor(.green)
+                        Text("TREES")
+                            .bold()
+                            .font(.system(.body, design: .rounded))
+                            .foregroundColor(.green)
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal)
         }
+        .fullScreenCover(isPresented: $didFinishOnboarding.not, content: {
+            OnboardingView()
+        })
         .fullScreenCover(item: $showCategoryFacts) { cate in
             if let fact = FunFact.data.first(where: { $0.category == cate }) {
                 QuickTips(facts: [fact] + Array(FunFact.data.filter({$0.id != fact.id}).shuffled().suffix(3)))

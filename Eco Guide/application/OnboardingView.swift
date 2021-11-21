@@ -16,6 +16,7 @@ struct OnboardingView: View {
     @AppStorage(Defaults.household) private var household: Household = .one
     @AppStorage(Defaults.trash) private var trash: Trash = .one
     @AppStorage(Defaults.goalEmission) private var goalEmission: Double = 10000
+    @AppStorage(Defaults.didFinishOnboarding) private var didFinishOnboarding: Bool = false
     @ObservedObject private var ecoCalculator = EcoCalculator()
     @State private var activeView: Int = 0
     
@@ -153,24 +154,26 @@ struct OnboardingView: View {
 
             LazyVGrid(columns: Array(repeating: .init(), count: 2)) {
                 Button("-10%", action: {
-                    goalEmission = 0.9 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
-                    dismiss()
+                    setGoal(0.9)
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-15%", action: {
-                    goalEmission = 0.85 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
-                    dismiss()
+                    setGoal(0.85)
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-20%", action: {
-                    goalEmission = 0.8 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
-                    dismiss()
+                    setGoal(0.8)
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
                 Button("-25%", action: {
-                    goalEmission = 0.75 * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
-                    dismiss()
+                    setGoal(0.75)
                 }).buttonStyle(PrimaryButtonStyle(color: .white, foregroundColor: .primary))
             }
         }
         .padding(.vertical, 30)
+    }
+    
+    func setGoal(_ val: Double) {
+        goalEmission = val * ecoCalculator.netEmission(usageData: usageData, tipData: tipData)
+        didFinishOnboarding = true
+        dismiss()
     }
 }
 

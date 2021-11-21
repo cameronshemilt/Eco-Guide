@@ -8,6 +8,7 @@ struct Defaults {
     static let driving = "kilometersPerWeek"
     static let diet = "diet"
     static let goalEmission = "goalEmission"
+    static let didFinishOnboarding = "didFinishOnboarding"
 }
 
 enum Diet: String, CaseIterable {
