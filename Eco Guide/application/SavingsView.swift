@@ -77,19 +77,22 @@ struct SavingsView: View {
     
     private var basicSaversCard: some View {
         Card {
-            VStack(alignment: .leading) {
-                Text("Get started with basic savers!")
-                    .font(.title3)
-                    .bold()
-                HStack(alignment: .top, spacing: 15) {
-                    Text("You have set yourself a goal of being carbon neutral.")
-                        .foregroundColor(.secondary)
-                    
-                    ProgressRing(0.78, color: .green)
-                        .diameter(80)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Get started with basic savers!")
+                        .font(.title3)
+                        .bold()
+                        .padding(.bottom, 3)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("• Recycle Waste")
+                        Text("• Renewable Energy")
+                        Text("• Public Transport")
+                        Text("• Use local produce")
+                    }
+                    .foregroundColor(.secondary)
                 }
+                Spacer(minLength: 0)
             }
-            .frame(maxWidth: .infinity)
         }
         .overlay(alignment: .topTrailing) {
             Button(action: { showBeginner = false }, label: {
