@@ -13,13 +13,16 @@ struct SavingsView: View {
     @State private var selectedCategory: Categories? = nil
     @State private var selectedTip: Tip? = nil
     @State private var showBeginner = true
+    
+    @ObservedObject private var tipManager = TipManager()
+
     var openTips: [Tip] {
-        Tip.data.filter({ tip in
+        tipManager.data.filter({ tip in
             !data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
     var acceptedTips: [Tip] {
-        Tip.data.filter({ tip in
+        tipManager.data.filter({ tip in
             data.contains(where: { $0.id == tip.id }) && (tip.category == selectedCategory || selectedCategory == nil)
         })
     }
