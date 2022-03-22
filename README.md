@@ -1,7 +1,7 @@
 # Eco-Guide
 
-Eco Guide is a hackerthon project from hackerTUM21.
-You can check it out on [Devpost](https://devpost.com/software/eco-guide) or try it yourself via [Test Flight](https://testflight.apple.com/join/nOo0EpT5).
+Eco Guide is a hackerthon project from hackaTUM21.
+You can check it out on [Devpost](https://devpost.com/software/eco-guide).
 
 > UPDATE: Eco Gude was selected as a **winner** for the Microsoft challenge!
 
